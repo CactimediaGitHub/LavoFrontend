@@ -1,0 +1,174 @@
+<div class="ui padded layout orders view-order order-vendor">
+  {{#if model.order.openbasket}}
+    <div class="header content open-basket-layout">
+
+      <div class="ui transparent header header-default-height margined">
+        <div class="item">
+          {{#link-to (constant "ROUTE_ORDERS_LIST_NEW") classNames="back" tagName="div"}}
+            <i class="lavo-icon-arrow icon"></i>
+          {{/link-to}}
+        </div>
+        <div class="content">
+          Request open basket
+        </div>
+        <div class="item"></div>
+      </div>
+      <div class="content">
+        <div class="vendor-info">
+          <div class="ui small user-card">
+            <div class="avatar">
+              <img src={{model.order.customer.avatarUrl}}>
+            </div>
+          </div>
+          <h5>Customer</h5>
+          <h3>{{model.order.customer.email}}</h3>
+        </div>
+      </div>
+    </div>
+  {{else}}
+    <div class="header content order-layout">
+      <div class="ui transparent header">
+        <div class="item go-back">
+          {{#link-to (constant "ROUTE_ORDERS_LIST_NEW")}}
+            <i class="lavo-icon-arrow icon"></i>
+          {{/link-to}}
+        </div>
+        <div class="content">
+          <div class="vendor-info">
+            <div class="ui small user-card">
+              <div class="avatar">
+                <img src={{if model.order.vendor.avatar model.order.vendor.avatar (constant "FIXTURE_IMAGE")}}>
+              </div>
+            </div>
+            <h5>ORDER VENDOR</h5>
+            <h3>{{model.order.vendor.name}}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/if}}
+
+
+
+
+  <div class="content">
+    <div class="ui list header">ORDER DETAILS</div>
+    <div class="ui list">
+      <div class="item">
+        <div class="content">Status</div>
+        <div class="content">
+          <div class="info">{{model.order.state}}</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="content">Vendor</div>
+        <div class="content">
+          <div class="info">{{model.order.vendor.name}}</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="content">Created</div>
+        <div class="content">
+          <div class="info">{{moment-from-now model.order.createdAt}}</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="content">Phone</div>
+        <div class="content">
+          <div class="info">{{model.order.customer.fullPhone}}</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="content">Order number</div>
+        <div class="content">
+          <div class="info">{{model.order.id}}</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="content">Pickup</div>
+        <div class="content">
+          <div class="info">{{model.order.shipping.pickUpFormatted}}</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="content">Dropoff</div>
+        <div class="content">
+          <div class="info">{{model.order.shipping.dropOffFormatted}}</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="content">Address</div>
+        <div class="content">
+          <div class="info">{{model.order.address.address1}}</div>
+        </div>
+      </div>
+      {{#if model.order.address.address2}}
+        <div class="item">
+          <div class="content"></div>
+          <div class="content">
+            <div class="info">{{model.order.address.address2}}</div>
+          </div>
+        </div>
+      {{/if}}
+      <div class="item">
+        <div class="content">Delivery mode</div>
+        <div class="content">
+          <div class="info">{{model.order.shipping.shippingMethod.shippingMethod}}</div>
+        </div>
+      </div>
+      {{#if model.totals.promotion}}
+        <div class="item">
+          <div class="content">Promotion deduction</div>
+          <div class="content">
+            <span class="info"> AED {{price model.totals.promotion}}</span>
+          </div>
+        </div>
+      {{/if}}
+      {{#if model.order.total}}
+        <div class="item">
+          <div class="content">Total fee</div>
+          <div class="content">
+            <div class="info">AED {{price model.order.total}}</div>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+    {{#each model.orderItemsGroupedByService as |item|}}
+      <div class="ui list header">{{item.service.name}}</div>
+
+      <div class="ui tiled list">
+        {{#each item.orderItems as |orderItem|}}
+          <div class="item">
+            <div class="content breakable">
+              {{orderItem.inventoryItem.item.name}}<br>
+              <small>{{orderItem.inventoryItem.itemType.name}}</small>
+            </div>
+            <div class="content">
+              <div class="ui counter">{{orderItem.quantity}}</div>
+            </div>
+            <div class="green-addon">AED {{price orderItem.inventoryItem.price}}</div>
+          </div>
+        {{/each}}
+      </div>
+    {{/each}}
+    {{#if (eq model.order.state (constant "ORDER_STATUS_PENDING"))}}
+      <div class="ui full-width unbordered button">
+        <button class="ui full-width unbordered blue button" {{action (route-action 'deleteOrder')}}>Cancel order
+        </button>
+      </div>
+    {{else if (or (eq model.order.state (constant "ORDER_STATUS_UPDATING")) (eq model.order.state (constant "ORDER_STATUS_PROCESSING")))}}
+      <div class="ui full-width unbordered button">
+        <div class="ui full-width unbordered button grey">Cancel order</div>
+        <div class="button-hint">Active order cannot be canceled</div>
+      </div>
+    {{else if (eq model.order.state (constant "ORDER_STATUS_COMPLETED"))}}
+
+    {{else if (eq model.order.state (constant "ORDER_STATUS_UPDATING"))}}
+      <div class="ui full-width unbordered button" {{action (route-action 'deleteOrder')}}>Cancel</div>
+    {{else if (eq model.order.state (constant "ORDER_STATUS_CANCELLED"))}}
+
+    {{/if}}
+
+  </div>
+
+</div>

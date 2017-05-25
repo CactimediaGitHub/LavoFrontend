@@ -1,0 +1,34 @@
+{{#if fullAddress}}
+<div class="order_setting_address">
+  {{#if icon}}  
+  <i class="lavo-icon-{{icon}} icon"></i>{{/if}}
+  <div class="content">    
+    {{#if label}}
+      {{label}}
+      <div>
+        {{#if fullAddress}}
+          {{fullAddress}}
+        {{/if}}
+      </div>
+  
+    {{else}}
+      {{yield}}
+    {{/if}}
+  </div>
+  </div>
+  <div class="ui checkbox {{if isActive "checked"}}">
+    <i class="lavo-icon-tick icon"></i>
+  </div>
+{{else}}
+  <div class="content">
+    {{#if icon}}<i class="lavo-icon-{{icon}} icon"></i>{{/if}}
+    {{#if label}}
+      {{label}}
+    {{else}}
+      {{yield}}
+    {{/if}}
+  </div>
+  <div class="ui checkbox {{if isActive "checked"}}">
+    <i class="lavo-icon-tick icon"></i>
+  </div>
+{{/if}}

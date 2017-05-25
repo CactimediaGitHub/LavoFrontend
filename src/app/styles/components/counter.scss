@@ -1,0 +1,22 @@
+.counter-place{
+  width: 2em;
+  text-align: center;
+  margin-right: 0.4em;
+}
+.ui.counter {
+  border: .1rem solid #cccccc;
+  border-radius: .1rem;
+  color: #555757;
+  font-size: .9em;
+  margin: 0 .3em;
+  padding: 0 .2em;
+}
+
+.ui.violet.counter {
+  font-size: .7em;
+  border-radius: .2em;
+  color: white;
+  font-weight: 100;
+  background-color: #7a88d0;
+  display: inline-block;
+}

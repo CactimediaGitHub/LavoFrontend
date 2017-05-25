@@ -1,0 +1,20 @@
+<div class="ui padded layout orders cloud-background">
+  <div class="header content">
+    <div class="ui header header-default-height margined">
+      <div class="item">
+        {{#link-to (constant 'ROUTE_ADMIN_HOME')}}
+          <i class="lavo-icon-arrow icon"></i>
+        {{/link-to}}
+      </div>
+      <div class="content">My reviews</div>
+      <div class="item"></div>
+    </div>
+  </div>
+  <div class="content">
+    {{#each model as |item|}}
+      {{#link-to (constant 'ROUTE_ADMIN_REVIEW_SHOW') item tagName="div"}}
+        {{review-item-own review=item}}
+      {{/link-to}}
+    {{/each}}
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="gallery">
+
+  {{#each model as |image index|}}
+    {{#link-to (constant "ROUTE_VENDOR_GALLERY_FULLSCREEN") index classNames="item" tagName="div"}}
+      <img src="{{image.thumb.url}}">
+    {{/link-to}}
+  {{/each}}
+
+</div>

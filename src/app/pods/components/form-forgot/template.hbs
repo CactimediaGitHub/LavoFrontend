@@ -1,0 +1,13 @@
+{{#if errorMessage}}
+  {{ui-alert message=errorMessage}}
+{{/if}}
+
+{{#if successMassage}}
+  {{ui-alert message=successMassage classNames="success"}}
+{{/if}}
+
+{{ui-input type="email" value=email placeholder="Email address" classNames="field" autocomplete='off'}}
+
+<button type="submit" class="ui small unbordered full-width blue button">Reset
+  password
+</button>

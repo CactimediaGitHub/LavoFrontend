@@ -1,0 +1,51 @@
+<div class="ui padded layout orders">
+  <div class="header content">
+    <div class="ui header">
+      <div class="content left">Vendor dashboard</div>
+      <div class="item icon-counter">
+        <i class="lavo-icon-ring icon"></i>
+        {{#if model.notificationsCount}}
+          <span class="ui counter">{{model.notificationsCount}}</span>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+  <div class="content">
+      {{#link-to (constant "ROUTE_ADMIN_ORDER_LIST_NEW") tagName="div"}}
+        {{order-item
+          title="new order"
+          quantity=newOrdersCount
+          hideExtraInfo=true
+          classNames="ui smallest card"
+        }}
+      {{/link-to}}
+      {{#link-to (constant "ROUTE_ADMIN_REVIEW") tagName="div"}}
+        {{order-item
+          title="new review"
+          quantity=newReviewsCount
+          hideExtraInfo=true
+          iconComment=true
+          classNames="ui smallest card blue-krailo-card"
+        }}
+      {{/link-to}}
+    {{#link-to (constant "ROUTE_ADMIN_SETTINGS_PAYMENT") tagName="div"}}
+      <div class="ui smallest card light-blue-card">
+          <div class="image">
+              <i class="lavo-icon-comment icon"></i>
+          </div>
+          <div class="content">
+              <div class="sub header">
+                Payments
+              </div>
+              <div class="header">
+                Click to see your payments
+              </div>
+          </div>
+      </div>
+    {{/link-to}}
+
+    {{#unless session.isAuthenticated}}
+      {{card-need-login}}
+    {{/unless}}
+  </div>
+</div>

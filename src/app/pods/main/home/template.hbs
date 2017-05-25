@@ -1,0 +1,62 @@
+<div class="ui padded layout home">
+  <div class="header content">
+    <div id="ember966" class="ember-view ui header main-home">
+      <div class="content small-icon" {{action (route-action "toggleSearch")}}>
+        {{locality}}
+      </div>
+      {{#link-to (constant "ROUTE_SETTINGS_NOTIFICATIONS")}}
+        <div class="item icon-counter">
+          <i class="lavo-icon-ring icon"></i>
+          {{#if (get model 'notifications.content.meta.total-count')}}
+            <span class="ui counter">
+              {{#if (lt (get model 'notifications.content.meta.total-count') 99)}}
+                {{get model 'notifications.content.meta.total-count'}}
+              {{else}}
+                99+
+              {{/if}}
+            </span>
+          {{/if}}
+        </div>
+      {{/link-to}}
+    </div>
+
+    <div class="ui header-filter">
+      <div class="content small-icon search_bar">
+        {{input value=model.query placeholder="Type to search" classNames="search" key-up=(route-action "search")}}
+        <div class="right item" {{action (route-action "toggleSearch")}}>
+          {{ui-icon name="lavo-icon-search" }}
+        </div>
+      </div>
+
+      <div class="location_container">
+      {{#if (eq model.state.currentRoute (constant "ROUTE_VENDOR_MAP"))}}
+        {{#link-to (constant "ROUTE_VENDOR_TILES") tagName="div" class="left item"}}
+          <i class="lavo-icon-square icon"></i>
+        {{/link-to}}
+      {{else}}
+        {{#link-to (constant "ROUTE_VENDOR_MAP") tagName="div" class="left item"}}
+          <i class="lavo-icon-map-with-marker icon"></i>
+        {{/link-to}}
+      {{/if}}
+      </div>
+      <div class="filter_container">
+      {{#link-to (constant "ROUTE_VENDOR_FILTER") tagName='div' class='text blue-link'}}
+        Filter
+      {{/link-to}}
+      </div>
+
+
+    </div>
+  </div>
+
+  <div class="content bg_grey">
+    {{outlet}}
+
+    {{#unless model.session.isAuthenticated}}
+      {{card-need-login}}
+    {{/unless}}
+    {{#if model.lastOrder}}
+      {{card-last-order lastOrder=model.lastOrder goToVendor='goToVendor'}}
+    {{/if}}
+  </div>
+</div>

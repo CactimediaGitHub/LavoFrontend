@@ -1,0 +1,80 @@
+.ui.user-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #a8a8a8;
+  font-size: .9rem;
+  font-weight: 100;
+  padding: 1em;
+
+  [type=file] {
+    display: none;
+  }
+
+  .avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 7rem;
+    height: 7rem;
+    border-radius: 500rem;
+    margin: .5em auto 1em;
+    overflow: hidden;
+    z-index: 1;
+    position: relative;
+    img {
+      height: 102%;
+      position: absolute;
+      display: block;
+      left: 50%;
+      transform: translateX(-50%);
+      top:0;
+    }
+
+    &.empty {
+      border: .1em dotted #a8a8a8;
+      &:before {
+        font-family: 'lavo-icon-set' !important;
+        content: "\e903";
+        font-size: 2.7em;
+        display: block;
+        position: relative;
+        color: #33b5ff;
+      }
+      &.loading:before {
+        animation-name: avatarLoading;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+      }
+    }
+
+    &.add-option {
+      &:before {
+        font-family: 'lavo-icon-set' !important;
+        content: "\e903";
+        font-size: 2.7em;
+        display: block;
+        position: relative;
+      }
+
+    }
+  }
+}
+
+@keyframes avatarLoading {
+  from {
+    transform: rotateY(0deg)
+  }
+  to {
+    transform: rotateY(360deg)
+  }
+}
+
+.ui.small.user-card .avatar {
+  width: 6rem;
+  height: 6rem;
+}
+
+

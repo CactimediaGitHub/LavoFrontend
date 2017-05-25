@@ -1,0 +1,13 @@
+<div class="image">
+  <img src="{{if (and session.isCustomer (eq review.reviewer.id session.currentUser.id)) review.reviewable.avatar review.reviewer.avatarUrl }}">
+</div>
+<div class="content">
+  <div class="sub header">{{if session.isCustomer 'You reviewed' 'You have been reviewed'}}</div>
+  <div class="header">{{if (and session.isCustomer (eq review.reviewer.id session.currentUser.id)) review.reviewable.name review.reviewer.name }}</div>
+</div>
+<div class="rate">{{review.rating}}</div>
+<div class="extra">
+  <span><i class="lavo-icon-clock icon"></i>{{moment-from-now review.createdAt}}</span>
+  <span><i class="lavo-icon-like icon"></i>{{pluralize review.likesCount 'like'}}</span>
+  <span><i class="lavo-icon-comment icon"></i>{{pluralize review.commentsCount 'comment'}}</span>
+</div>

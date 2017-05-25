@@ -1,0 +1,92 @@
+<div class="ui padded layout orders">
+
+  <div class="header content">
+    <div class="ui header header-default-height margined">
+      <div class="item" {{action (route-action 'goBack')}} class="item">
+        <i class="lavo-icon-arrow icon"></i>
+      </div>
+      <div class="content">Account settings</div>
+      <div class="item"></div>
+    </div>
+  </div>
+
+  <div class="content keyboard-scroll">
+    <div class="ui user-card">
+      {{avatar-uploader onChanged='avatarDidChange' accept="image/*" modelProperty=model.avatar class="avatar-uploader" }}
+    </div>
+    <div class="ui list header">DETAILS</div>
+    <div class="ui list">
+      {{ui-input-extended
+      placeholder="Name"
+      type="text"
+      model=model
+      valuePath="name"
+      }}
+
+      {{ui-input-extended
+      placeholder="Surname"
+      type="text"
+      model=model
+      valuePath="surname"
+      }}
+
+      <div class="item">
+        <div class="content">Email</div>
+        <div class="select-wrapper">{{model.email}}</div>
+      </div>
+
+      {{ui-phone model=model prefixPhoneValuePath="prefixPhone" phoneValuePath="phone"}}
+
+      {{#link-to (constant "ROUTE_SETTINGS_PASSWORD_RESET") class="item blue"}}
+        Change password
+      {{/link-to}}
+
+    </div>
+    <div class="ui list header">ADDRESS</div>
+    <div class="ui list">
+
+      <div class="item">
+        <div class="content">Country</div>
+        <div class="select-wrapper">
+          <select class="ui select">
+            <option value="AE">United Arab Emirates</option>
+          </select>
+        </div>
+      </div>
+
+      {{ui-input-extended
+      placeholder="Address line 1"
+      type="text"
+      model=address
+      valuePath="address1"
+      maxlength=60
+      }}
+
+      {{ui-input-extended
+      placeholder="Address line 2"
+      type="text"
+      model=address
+      valuePath="address2"
+      maxlength=60
+      }}
+
+      {{cities-select model=address valuePath="city"}}
+
+      {{ui-input-extended
+      placeholder="Nearest Landmark"
+      type="text"
+      model=address
+      valuePath="nearestLandmark"
+      }}
+
+    </div>
+
+  </div>
+
+</div>
+<div class="footer content">
+  {{#if redirectTo}}
+    {{card-fill-profile}}
+  {{/if}}
+  <div class="ui unbordered blue button" {{action 'saveProfile'}}>Save changes</div>
+</div>

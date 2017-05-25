@@ -1,0 +1,18 @@
+<div class="close button-close" {{action "close"}}>
+  <i class="lavo-icon-cross-01" ></i>
+</div>
+
+<div class="content">
+  <div class="outer-circle">
+    <div class="animated-circle">
+      <i class="lavo-icon-trash icon"></i>
+    </div>
+  </div>
+
+  <div class="caption">
+    Please confirm you want to cancel order
+  </div>
+</div>
+<div class="footer">
+  {{#link-to (constant 'ROUTE_ORDER_SINGLE_CANCEL') class="ui button full-width unbordered red"}}Confirm{{/link-to}}
+</div>

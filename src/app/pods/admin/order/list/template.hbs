@@ -1,0 +1,37 @@
+<div class="ui padded layout orders cloud-background">
+  <div class="header content">
+    <div class="ui header header-default-height margined">
+      <div class="item">
+        {{#link-to (constant "ROUTE_ADMIN_HOME")}}
+          <i class="lavo-icon-arrow icon"></i>
+        {{/link-to}}
+      </div>
+      <div class="content">Orders</div>
+      <div class="item"></div>
+    </div>
+  </div>
+  <div class="tabs content">
+    <div class="ui tabs">
+      {{#link-to (constant "ROUTE_ADMIN_ORDER_LIST_NEW") classNames="item" tagName="div"}}
+        New
+          {{#unless (eq model.newOrdersCount 0)}}
+            <span class="ui counter">{{model.newOrdersCount}}</span>
+          {{/unless}}
+      {{/link-to}}
+      {{#link-to (constant "ROUTE_ADMIN_ORDER_LIST_ACTIVE") classNames="item" tagName="div"}}
+        Active
+        {{#unless (eq model.activeOrdersCount 0)}}
+          <span class="ui counter">{{model.activeOrdersCount}}</span>
+        {{/unless}}
+      {{/link-to}}
+      {{#link-to (constant "ROUTE_ADMIN_ORDER_LIST_HISTORY") classNames="item" tagName="div"}}
+        History
+          {{#unless (eq model.historyOrdersCount 0)}}
+            <span class="ui counter">{{model.historyOrdersCount}}</span>
+          {{/unless}}
+      {{/link-to}}
+    </div>
+  </div>
+
+  {{outlet}}
+</div>

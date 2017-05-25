@@ -1,0 +1,33 @@
+<div class="image">
+  <i class="lavo-icon-{{if iconComment 'review' 'cart'}} icon"></i>
+</div>
+<div class="content">
+  <div class="sub header">{{#if title}} {{title}} {{else}} {{#if isNewOrder}} You received a new order {{/if}} {{/if}}</div>
+  <div class="header">
+    {{#if title}}
+      You have {{pluralize quantity title}} {{unless iconComment "waiting for approval"}}
+    {{else}}
+      {{#if (eq session.data.authenticated.data.type 'customers')}}
+        {{order.vendor.name}}
+      {{else}}
+        {{order.customer.name}} {{order.customer.surname}}
+      {{/if}}
+    {{/if}}</div>
+</div>
+
+{{#unless hideExtraInfo}}
+  <div class="extra">
+    <span><i class="lavo-icon-clock icon"></i>{{moment-from-now order.createdAt}}</span>
+    {{#if order.openbasket}}
+      <span>
+        Request open basket
+      {{#if (eq order.state (constant "ORDER_STATUS_UPDATING"))}}
+        - updating
+      {{else if (eq order.state (constant "ORDER_STATUS_APPROVING"))}}
+        - approval needed
+      {{/if}}
+      </span>
+    {{/if}}
+
+  </div>
+{{/unless}}

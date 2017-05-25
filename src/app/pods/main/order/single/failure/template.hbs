@@ -1,0 +1,22 @@
+<div class="ui blue modal-box">
+  <div class="content">
+    <div class="outer-circle">
+      <div class="animated-circle button-close">
+        <i class="lavo-icon-cross-01 icon"></i>
+      </div>
+    </div>
+
+    <div class="caption">
+      Order failed! <br>
+      Reason: {{model.errorMessage}}
+    </div>
+  </div>
+  <div class="footer">
+    {{#link-to (constant "ROUTE_MAKE_ORDER_CHECKOUT") classNames="ui full-width unbordered blue button"}}
+      Select other payment method
+    {{/link-to}}
+    {{#link-to (constant "ROUTE_ORDERS") classNames="ui full-width unbordered blue button"}}
+      Go to orders
+    {{/link-to}}
+  </div>
+</div>

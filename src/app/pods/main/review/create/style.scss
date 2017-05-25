@@ -1,0 +1,28 @@
+.ui.layout.create-review {
+
+  > .header.content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: center;
+    color: #1eadff;
+
+    .ui.header {
+      padding: 2rem .9rem 1.75em !important;
+    }
+  }
+
+  > .content {
+
+    .ui.fields {
+      padding:  0 1rem;
+    }
+  }
+
+  > .footer.content {
+
+    .ui.button {
+      padding: .58em .8em;
+    }
+  }
+}

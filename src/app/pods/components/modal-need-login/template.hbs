@@ -1,0 +1,23 @@
+<div class="close button-close" {{action "close"}}>
+  <i class="lavo-icon-cross-01"></i>
+</div>
+
+<div class="content">
+  <div class="outer-circle">
+    <div class="animated-circle">
+      <i class="lavo-icon-lock icon"></i>
+    </div>
+  </div>
+
+  <div class="caption">
+    You need to login <br>to use all app features
+  </div>
+</div>
+<div class="footer">
+  {{#link-to (constant "ROUTE_AUTH_SIGNIN")
+  (query-params modalNeedLogin="undefined")
+  classNames="ui full-width unbordered blue button"
+  tagName="button"}}
+    Login now
+  {{/link-to}}
+</div>

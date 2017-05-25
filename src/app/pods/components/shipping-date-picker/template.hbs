@@ -1,0 +1,36 @@
+<div class="ui list border-bottom-none">
+  <div class="item with-arrow" {{action "selectDate"}}>
+    <div class="content">
+      <i class="lavo-icon-calendar icon"></i>
+      {{moment-format date 'dddd DD/MM'}}
+    </div>
+    <div class="left item dropdown-view">
+      <i class="lavo-icon-down-arrow icon"></i>
+    </div>
+  </div>
+  <div class="item with-arrow {{if (eq periods.length 0) 'has-error'}}">
+    <div class="content ">
+      <i class="lavo-icon-clock icon"></i>
+      <select class="ui gray select needsclick "
+              disabled={{eq periods.length 0}}
+                onchange={{action "selectPeriod" value="target.value"}}>
+        <option value="">{{if (eq periods.length 0) "No working time this day" "Select time"}}</option>
+
+        {{#each periods as |item|}}
+          {{#if (eq item.value period)}}
+            <option value="{{item.value}}" selected>
+              {{item.label}}
+            </option>
+          {{else}}
+            <option value="{{item.value}}">
+              {{item.label}}
+            </option>
+          {{/if}}
+        {{/each}}
+      </select>
+    </div>
+    <div class="left item dropdown-view">
+      <i class="lavo-icon-down-arrow icon"></i>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+.ui.date-picker {
+  background-color: #6eb3fc;
+  height: 10vh;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  transform: translateZ(0);
+
+
+
+  .item {
+    @extend .clickable;
+    text-align: center;
+    flex: 0 0 auto;
+    width: 33%;
+    color: white;
+  }
+
+  .non-selected {
+    opacity: 0.5;
+  }
+
+  .selected {
+    opacity: 1;
+  }
+}

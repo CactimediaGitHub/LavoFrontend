@@ -1,0 +1,98 @@
+.application-wrapper.ios {
+  &.keyboard * {
+    -webkit-overflow-scrolling: auto !important;
+  }
+  .ui.layout.new-address > .header .ui.header {
+    padding-top: 1em;
+  }
+
+  .ui.filter > .header {
+    padding-top: 2.8em;
+  }
+
+  .ui.layout .header {
+    z-index: 0;
+  }
+
+  .ui.layout.auth > .content.header {
+  }
+
+  .input-ios {
+    padding-right: .5rem;
+    padding-left: .5rem;
+  }
+
+  .ui.white.bordered.card.notification-card {
+    align-items: center;
+  }
+
+  .header.header-default-height {
+    position: relative;
+
+    .icon {
+      position: absolute;
+      z-index: 100;
+    }
+  }
+
+  .header.header-default-height.authorization-page {
+    .icon {
+      top: -.35rem;
+    }
+  }
+
+  .header.buy-credits {
+    margin-top: .5rem;
+
+    .icon {
+      top: 1.5rem;
+    }
+  }
+
+  .header.credits-home {
+    margin-top: -.5rem;
+
+    .icon {
+      top: 2.5rem;
+    }
+  }
+
+  .header.promotion-page,
+  .header.margined {
+    margin-top: .4rem;
+
+    .icon {
+      top: 1.6rem;
+      left: 1rem;
+      padding: 1em;
+      font-size: 1.14em;
+      transform: translate(-1em, -1em);
+    }
+  }
+
+  .ui.layout.main > .content .header.content .ui.header.header-default-height {
+    height: 4rem;
+  }
+
+  // iphone 5, 5s, se
+  @media screen and (device-aspect-ratio: 40/71) {
+    .action-ios {
+      width: 10vw;
+      height: 10vh;
+    }
+  }
+
+  .ui.layout:not(.home) > .content .header.content .ui.header .lavo-icon-arrow {
+    padding: 1em;
+    transform: translate(-1em, -1em);
+  }
+
+  .nobg {
+    background-image: none !important;
+  }
+}
+
+.ui.filter > .header {
+  z-index: 10000 !important;
+}
+

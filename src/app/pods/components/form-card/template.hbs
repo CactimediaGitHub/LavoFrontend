@@ -1,0 +1,48 @@
+<div class="header content">
+  <div class="ui full-width header">
+    <div class="left item">Add card</div>
+    <div class="right item" {{action "done"}}>Cancel</div>
+  </div>
+</div>
+<div class="content keyboard-scroll">
+  <div class="ui list header">CREDIT CARD INFO</div>
+  <div class="ui list">
+    {{ui-input model=card classNames="input-ios" valuePath="first-name" placeholder="First Name"}}
+    {{ui-input model=card classNames="input-ios" valuePath="last-name" placeholder="Last Name"}}
+    {{ui-input model=card classNames="input-ios" valuePath="nick" placeholder="Card name"}}
+    {{ui-input model=card classNames="input-ios" valuePath="number" placeholder="Card number"}}
+
+    {{#ui-select
+      model=card
+      valuePath="month"
+      wrapClasses="blue rtl"
+      showDropdownIcon=true
+      values=(range 1 12 true)
+      action="selectMonth"
+      placeholder="Select month" }}
+      <div class="content card-nickname">Month</div>
+    {{/ui-select}}
+
+    {{#ui-select
+      model=card
+      valuePath="year"
+      wrapClasses="blue rtl"
+      showDropdownIcon=true
+      values=(range year (inc 10 year))
+      action="selectYear"
+      placeholder="Select year" }}
+      <div class="content card-nickname">Year</div>
+    {{/ui-select}}
+
+    {{ui-input model=card classNames="input-ios" valuePath="verification-value" placeholder="CVV"}}
+  </div>
+</div>
+
+<div class="footer content">
+  {{#if errorMessage}}
+    {{ui-alert message=errorMessage}}
+  {{/if}}
+  <div class="ui small full-width purple button" {{action "save" card}} disabled={{state.isLoading}}>
+    Save card
+  </div>
+</div>

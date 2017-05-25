@@ -1,0 +1,85 @@
+<div class="ui layout cart padded orders">
+  <div class="header content">
+
+    <div class="ui header header-default-height">
+      <div class="item">
+        {{#link-to (constant "ROUTE_ORDERS_LIST_NEW") class=" go-back button"}}
+          <i class="lavo-icon-arrow icon"></i>
+        {{/link-to}}
+      </div>
+      <div class="content">Your cart</div>
+      <div class="item"></div>
+    </div>
+
+  </div>
+  <div class="content">
+    {{#each model.orderItemsGroupedByService as |item|}}
+      <div class="ui list header">{{item.service.name}}</div>
+
+      <div class="ui tiled list">
+        {{#each item.orderItems as |orderItem|}}
+          <div class="item">
+          <span>
+            <span>
+              {{orderItem.inventoryItem.item.name}}<br>
+              <small>{{orderItem.inventoryItem.itemType.name}}</small>
+            </span>
+            <span class="ui counter">{{orderItem.quantity}}</span>
+          </span>
+          </div>
+        {{/each}}
+      </div>
+    {{/each}}
+    <div class="ui list header">DELIVERY TYPE</div>
+    <div class="ui list purple border-bottom-none">
+      {{#each model.shippingMethods as |method|}}
+        {{ui-radio
+        label=method.shippingMethod
+        value=method.id
+        groupValue=model.order.shipping.shippingMethod.id
+        disabled=true}}
+      {{/each}}
+    </div>
+    <div class="ui list header">CART SUBTOTAL</div>
+    <div class="ui list border-bottom-none">
+      <div class="item">
+        <div class="content">Subtotal</div>
+        <div class="content">
+          <span class="info">AED {{price model.totals.subtotal}}</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="content">Shipping charge</div>
+        <div class="content">
+          <span class="info">AED {{price model.order.shipping.shippingMethod.shippingCharge}}</span>
+        </div>
+      </div>
+      {{#if model.totals.promotion}}
+        <div class="item">
+          <div class="content">Promotion deduction</div>
+          <div class="content">
+            <span class="info">AED {{price model.totals.promotion}}</span>
+          </div>
+        </div>
+      {{/if}}
+      <div class="item">
+        <div class="content">Total</div>
+        <div class="content">
+          <span class="info">AED {{price model.totals.total}}</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="footer content">
+    <div class="ui full-width unbordered button">
+      <button
+        class="ui full-width unbordered violet button padded-bottom" {{action "submit" model.order (constant "ORDER_STATUS_CANCELLED")}}>
+        Reject
+      </button>
+      {{#link-to (constant "ROUTE_ORDER_SINGLE_PAYMENT") model.order.id class="ui full-width unbordered blue button"}}
+        Approve
+      {{/link-to}}
+    </div>
+  </div>
+</div>

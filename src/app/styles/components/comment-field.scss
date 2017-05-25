@@ -1,0 +1,19 @@
+.ui.comment-field {
+  display: flex;
+  flex-direction: row;
+
+  input {
+    flex: 1;
+    padding: 0 1rem;
+    border: .1em solid #d4d4d4;
+    border-radius: 0;
+    border-bottom: none;
+
+  }
+
+  .ui.button {
+    display: inline-block;
+    color: #5ca2fc;
+    padding: .7em 1rem;
+  }
+}

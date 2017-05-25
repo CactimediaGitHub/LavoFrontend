@@ -1,0 +1,27 @@
+<div class="ui padded layout orders view-order">
+  <div class="header content">
+    <div class="ui header header-default-height">
+      <div class="item">
+        {{#link-to (constant 'ROUTE_ADMIN_ORDER_SHOW')}}
+          <i class="lavo-icon-arrow icon"></i>
+        {{/link-to}}
+      </div>
+      <div class="content">Order location</div>
+      <div class="item"></div>
+    </div>
+  </div>
+  <div class="content">
+
+    {{#if model.locationFound}}
+      {{x-mapbox-map
+      options=model.mapOptions
+      sources=model.mapSources
+      layers=model.mapLayers
+      }}
+    {{else}}
+      <div class="no-location">
+        <span>Location could not be found</span>
+      </div>
+    {{/if}}
+  </div>
+</div>

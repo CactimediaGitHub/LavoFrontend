@@ -1,0 +1,36 @@
+<div class="ui padded layout order">
+  <div class="header content">
+
+    <div class="ui transparent header header-default-height margined">
+      <div class="item">
+        {{#link-to (constant "ROUTE_MAKE_ORDER") classNames="back" tagName="div"}}
+          <i class="lavo-icon-arrow icon"></i>
+        {{/link-to}}
+      </div>
+      <div class="content">Order settings</div>
+      <div class="item"></div>
+    </div>
+
+  </div>
+  <div class="content">
+    <div class="ui list header">DELIVERY TYPE</div>
+    <div class="ui list purple">
+      {{#each model.shippingMethods as |method|}}
+        {{ui-radio
+        label=method.shippingMethod
+        value=method.id
+        groupValue=model.selectedMethodId
+        changed=(route-action "selectShippingMethod" method)}}
+      {{/each}}
+    </div>
+  </div>
+  <div class="footer content">
+    {{#link-to (constant "ROUTE_MAKE_ORDER_SHIPPING")
+    tagName="div" classNames="mini-card"}}
+      {{mini-cart
+      quantity=model.order.cpQuantity
+      total=(price model.order.cpTotalWithShipping)
+      }}
+    {{/link-to}}
+  </div>
+</div>

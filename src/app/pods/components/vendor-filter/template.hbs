@@ -1,0 +1,41 @@
+<div class="ui filter">
+  <div class="header">
+    <div class="title">Filter results</div>
+    <div class="action" {{action 'done'}}>Done</div>
+  </div>
+  <div class="content">
+
+    <div class="ui list header">FILTER RESULTS BY</div>
+    <div class="ui list">
+      {{ui-radio icon="map-marker" label="Proximity" value=(constant "SORT_BY_PROXIMITY") groupValue=sort}}
+      {{ui-radio icon="star" label="Rating" value=(constant "SORT_BY_RATING") groupValue=sort}}
+
+      {{#link-to (constant "ROUTE_VENDOR_FILTER_PRICE") tagName="div"}}
+        {{ui-radio icon="label" label="Price" value=(constant "SORT_BY_PRICE") groupValue=sort}}
+      {{/link-to}}
+    </div>
+
+    <div class="ui list header">VIEW MODE</div>
+    <div class="ui horizontal list">
+      {{#filter-item value=(constant "ROUTE_VENDOR_TILES") groupValue=routeName}}
+        <div class="content">
+          <i class="lavo-icon-square icon"></i> TILES
+        </div>
+      {{/filter-item}}
+      {{#filter-item value=(constant "ROUTE_VENDOR_LIST") groupValue=routeName}}
+        <div class="content">
+          <i class="icon">
+              <span class="list-icon">
+                  <span class="middle-line"></span>
+              </span>
+          </i> LIST
+        </div>
+      {{/filter-item}}
+      {{#filter-item value=(constant "ROUTE_VENDOR_MAP") groupValue=routeName}}
+        <div class="content">
+          <i class="lavo-icon-map-with-marker icon"></i> MAP
+        </div>
+      {{/filter-item}}
+    </div>
+  </div>
+</div>

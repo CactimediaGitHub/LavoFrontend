@@ -1,0 +1,19 @@
+<div class="ui filter">
+  <div class="header">
+    <div class="title">Choose item type</div>
+    <div class="action" {{action 'done'}}>Done</div>
+  </div>
+  <div class="content">
+
+    <div class="ui list header">TYPES</div>
+    <div class="ui list">
+      {{#each model.itemTypes as |itemType|}}
+        {{ui-radio
+        label=itemType.name
+        value=itemType.id
+        isUncheckable=true
+        groupValue=state.filterSelectedItemTypeID}}
+      {{/each}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="content">
+  <div class="ui header-filter content header filter-history">
+    <div class="text">Filter results</div>
+      <div class="item left select">
+      <select class="ui select"
+              name="filter"
+              onchange={{action (route-action "applyFilter") value="target.value"}}>
+        {{#each model.filterDateItems as |item|}}
+          {{#if (eq item.value model.filterDate)}}
+            <option value="{{item.value}}" selected>
+              {{item.label}}
+            </option>
+          {{else}}
+            <option value="{{item.value}}">
+              {{item.label}}
+            </option>
+          {{/if}}
+        {{/each}}
+      </select>
+      <i class="lavo-icon-down-arrow icon"></i>
+    </div>
+  </div>
+
+  {{#each model.orders as |order|}}
+    {{#link-to (constant "ROUTE_ADMIN_ORDER_SHOW") order.id tagName="div"}}
+      {{order-item order=order classNames="ui smallest card"}}
+    {{/link-to}}
+  {{/each}}
+</div>
+<div class="footer content">
+  {{ui-pagination
+  totalPages=model.orders.meta.total-pages
+  currentPage=model.orders.meta.current-page
+  onChange=(route-action "requestOrders")
+  }}
+</div>

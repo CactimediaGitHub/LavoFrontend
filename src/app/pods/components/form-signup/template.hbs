@@ -1,0 +1,11 @@
+{{#if errorMessage}}
+  {{ui-alert message=errorMessage}}
+{{/if}}
+
+{{ui-input placeholder="E-mail" type="email"  value=email classNames="field no-bot-border" autocomplete="off"}}
+{{ui-input placeholder="Password" type="password" value=password classNames="field no-bot-border" autocomplete="off"}}
+{{ui-input placeholder="Confirm password" type="password" value=confirmPassword classNames="field" autocomplete="off"}}
+
+<button type="submit" class="ui small full-width unbordered green button">
+  Create account
+</button>

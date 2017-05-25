@@ -1,0 +1,47 @@
+.ui.layout.intro {
+  position: relative;
+
+  .ui.container.navigation {
+    flex: inherit;
+    text-align: right;
+    margin-top: 1.4rem;
+    height: 12vh;
+  }
+
+  .ui.container.buttons {
+    background: #FFF;
+    padding: .88em .92em;
+    flex: inherit;
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .ui.button.skip {
+    background-color: transparent;
+    color: $white;
+  }
+
+  .ui.button {
+
+    &.facebook {
+      margin-bottom: .6rem;
+      flex: 1 1 100%;
+    }
+
+    &:not(.facebook) {
+      flex: 1 1 48%;
+    }
+
+    &:last-child {
+      margin-left: .47rem;
+    }
+  }
+}
+
+.hidden{
+  display:none;
+}

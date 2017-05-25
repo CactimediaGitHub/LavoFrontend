@@ -1,0 +1,67 @@
+$backgroundColor: #3d4651;
+$textColor: white;
+$activeColor: #33b5ff;
+
+.ui.footer {
+  background-color: $backgroundColor;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  font-size: .6rem;
+  font-weight: 100;
+  text-transform: uppercase;
+
+  .item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    flex: 1;
+    background-color: $backgroundColor;
+    color: $textColor;
+    height: 3.750rem;
+    position: relative;
+    text-decoration: none;
+    transition: background-color 200ms linear;
+    will-change: background-color;
+
+    @extend .clickable;
+
+    &:not(.active) {
+      opacity: .5;
+    }
+
+    &:active {
+      background-color: darken($backgroundColor, 6%);
+    }
+
+    &.active:before {
+      content: '';
+
+    }
+
+    .icon {
+      font-size: 2.4em;
+      margin-bottom: .2em;
+    }
+
+    @for $i from 1 through 4{
+      &.active:nth-child(#{$i}) ~ .moving-line{
+        transform:translateX(#{$i - 1}00%) translateY(0);
+      }
+    }
+  }
+  .moving-line{
+    transition: transform .5s ease;
+    transform: translateY(100%);
+    display: block;
+    width: 25%;
+    height: .25em;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: $activeColor;
+  }
+}

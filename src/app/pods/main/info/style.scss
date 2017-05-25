@@ -1,0 +1,20 @@
+.ui.layout.info {
+  font-size: 1rem;
+  font-weight: 100;
+
+  > .content {
+
+    &:not(.header) {
+      padding: 1em 1em 0;
+    }
+
+    img {
+      width: 100%;
+      margin: auto;
+    }
+
+    p {
+      color: #a8a8a8;
+    }
+  }
+}

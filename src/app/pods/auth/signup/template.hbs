@@ -1,0 +1,18 @@
+<div class="ui padded layout auth signup">
+  <div class="header content">
+    <div class="ui header header-default-height authorization-page">
+      <div class="item">
+        {{#link-to "intro" class="ui transparent unbordered go-back button"}}
+          <i class="lavo-icon-arrow icon"></i>
+        {{/link-to}}
+      </div>
+      <div class="content">Create account</div>
+      <div class="item"></div>
+    </div>
+  </div>
+  <div class="content">
+
+    {{form-signup onSubmit=(route-action 'signUp') }}
+
+  </div>
+</div>

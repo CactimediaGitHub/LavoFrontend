@@ -1,0 +1,48 @@
+general:
+  branches:
+    only:
+      - develop
+
+machine:
+  environment:
+      _JAVA_OPTIONS: "-Xms512m -Xmx1024m"
+      GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"'
+  xcode:
+    version: 7.3
+
+dependencies:
+  pre:
+    - brew update
+    - brew reinstall node
+    - npm i -g cordova@6.3.1  bower ember-cli
+ #  - brew install homebrew/completions/brew-cask-completion
+    - brew cask install java
+    - brew install android-sdk
+    - (while [ 1 ]; do sleep 5; echo y; done) | sudo android update sdk --all --filter platform-tools,build-tools-23.0.2,android-22,extra-android-support,extra-android-m2repository,extra-google-google_play_services,extra-google-analytics_sdk_v2,extra-google-gcm,extra-google-m2repository --no-ui --force
+
+test:
+  pre:
+    - echo $APP_VERSION $CIRCLE_BUILD_NUM
+    - chmod +x scripts/*
+    - chmod +x scripts/bootstrap.sh
+    - npm install:
+        pwd: src
+    - bower install:
+        pwd: src
+    - scripts/bootstrap.sh
+    - scripts/setcordovaversion.py $APP_VERSION $CIRCLE_BUILD_NUM
+    - cordova build android --staging
+    - ls -la platforms/android/build/outputs/apk/
+    - cp -r platforms/android/build/outputs/apk $CIRCLE_ARTIFACTS
+    - ./scripts/add-key.sh
+    - cordova build ios --staging --release --device --buildConfig build.json
+    - ls -la platforms/ios/build/device/ | grep ipa
+    - cp -r platforms/ios/build/device/Lavo.ipa $CIRCLE_ARTIFACTS
+  override:
+    - echo "Skip tests."
+
+deployment:
+  staging:
+    branch: develop
+    commands:
+     - ./scripts/ubertesters.sh

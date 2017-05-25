@@ -1,0 +1,48 @@
+<div class="ui padded layout orders">
+  <div class="header content">
+    <div class="ui header header-default-height margined">
+      <div class="item">
+        {{#link-to (constant 'ROUTE_ADMIN_REVIEW')}}
+          <i class="lavo-icon-arrow icon"></i>
+        {{/link-to}}
+      </div>
+      <div class="content">View review</div>
+      <div class="item"></div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="ui grey card review-card">
+      <div class="image">
+        <img src="{{model.reviewer.avatarUrl}}" alt="">
+      </div>
+      <div class="content">
+        <div class="header">{{model.title}}</div>
+        <div class="sub header">{{moment-format model.createdAt 'D MMMM YYYY'}}</div>
+      </div>
+      <div class="rate">{{model.rating}}</div>
+      <div class="extra body">
+        {{model.body}}
+      </div>
+      <div class="extra">
+        {{#if model.likedByCurrentUser}}
+          <span {{action (route-action 'saveDislike' model)}}><i class="lavo-icon-like icon"></i> {{pluralize model.likesCount 'like'}}</span>
+        {{else}}
+          <span {{action (route-action 'saveLike' model)}}><i class="lavo-icon-like icon"></i> {{pluralize model.likesCount 'like'}}</span>
+        {{/if}}
+        <span><i class="lavo-icon-comment icon"></i>{{pluralize model.commentsCount 'comments'}}</span>
+      </div>
+    </div>
+    {{#each model.comments as |comment|}}
+      {{comment-item comment=comment class="ui smallest grey review-card card"}}
+    {{/each}}
+  </div>
+
+  <div class="footer content">
+    {{#if error}}{{error}}{{/if}}
+    <div class="ui comment-field">
+      {{input type='text' value=value placeholder="Thanks"}}
+      <button class="ui unbordered button" {{action (route-action 'saveComment' model value)}} disabled={{state.isPending}}>Post</button>
+    </div>
+  </div>
+</div>

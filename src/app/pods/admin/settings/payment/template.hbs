@@ -1,0 +1,38 @@
+<div class="ui padded layout credits payment-page">
+  <div class="header content violet">
+    <div class="ui transparent header header-default-height credits-home">
+      <div class="item">
+          <div class="back" {{action 'back'}}>
+              <i class="lavo-icon-arrow icon"></i>
+          </div>
+      </div>
+      <div class="content">Payment</div>
+      <div class="item"></div>
+    </div>
+
+    <div class="text">
+      Account balance
+      <h1>AED {{price model.balance}}</h1>
+    </div>
+  </div>
+  <div class="tabs content">
+    <div class="ui date-picker">
+      {{#each sortedModel as |month|}}
+        <div class="item {{if (eq month selectedMonth) 'selected' 'non-selected'}}" {{action 'selectMonth' month}}>
+          {{month.month}}
+        </div>
+      {{/each}}
+    </div>
+  </div>
+  <div class="content">
+    <div class="ui list header">
+      ORDER DETAILS
+    </div>
+    <div class="ui list">
+      {{month-item-history class='item' typeInfo=selectedMonth.ordersCompleted title='Orders completed'}}
+      {{month-item-history class='item' typeInfo=(price selectedMonth.totalTransactions) title='Total transactions' currency="AED"}}
+      {{month-item-history class='item' typeInfo=selectedMonth.commission title='Commision' percent="%"}}
+      {{month-item-history class='item' typeInfo=(price selectedMonth.netAmount) title='Net amount available' currency="AED"}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+.ui.tabs {
+  font-size: 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  border-bottom: .1rem solid #d4d4d4;
+  height: 9.9vh;
+  padding: 0 .7em;
+  box-sizing:border-box;
+
+  .ui.counter{
+    padding: 0 .2em;
+  }
+
+  .item {
+    color: #555757;
+    flex: 1;
+    font-size: .8em;
+    text-align: center;
+    border: .1em solid #cccccc;
+    border-radius: .1em;
+    margin: 0 .25em;
+    padding: .92em 0;
+    margin-bottom: 0.45rem!important;
+
+
+    &.active {
+      background-color: #05a4ff;
+      border-color: #05a4ff;
+      color: white;
+
+      .ui.counter {
+        border-color: white;
+        color: white;
+      }
+    }
+  }
+  &.scroll{
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    transform: translateZ(0);
+
+
+    overflow-y: hidden;
+    padding:0;
+    .item{
+      flex: 0 0 auto;
+      width:30%;
+    }
+  }
+}

@@ -1,0 +1,49 @@
+.ui.checkbox {
+  border-radius: 500rem;
+  border: .13rem solid #05a4ff;
+  display: flex;
+  width: 8.5vw;
+  height: 8.5vw;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: #05a4ff;
+  border-color: #05a4ff;
+  transition: all .2s ease;
+  &:not(.checked) {
+    background-color: white;
+    color: #05a4ff;
+    border-color: #bfbfbf;
+
+    .icon {
+      display: none;
+    }
+  }
+
+  .icon {
+    font-size: 1em;
+    margin: 0;
+  }
+}
+
+.ui.list .item .content{
+  .checkbox{
+    .icon{
+      font-size: 1em;
+      margin: 0;
+    }
+  }
+}
+
+.ui.purple.list .ui.checkbox,
+.ui.purple.checkbox {
+  border-color: #7a88d0;
+  background-color: #7a88d0;
+
+  &:not(.checked) {
+    background-color: white;
+    border-color: #bfbfbf;
+    color: #7a88d0;
+  }
+}

@@ -1,0 +1,110 @@
+.ui.header {
+  display: flex;
+  flex-direction: row;
+  align-content: stretch;
+  //height: 5.7vh;
+  padding: 0 .9rem;
+  font-size: 1.1rem;
+  font-weight: 100;
+  width: 100vw;
+  background-color: transparent;
+  color: white;
+  .button:active {
+    background-color: transparent !important;
+  }
+
+  .icon {
+    font-size: 1.34em;
+    display: inline-block;
+    color: white;
+  }
+
+  &:not(.transparent) {
+    background-color: white;
+    color: #05a4ff;
+
+    .icon {
+      color: #05a4ff;
+    }
+  }
+
+  .item {
+    min-width: 7vw;
+    max-width: 10vw;
+    display: flex;
+    //justify-content: center;
+    align-items: center;
+    flex: 1 1 auto;
+    transform: none !important;
+    &.select {
+      select {
+        padding: 0 1.4rem 0 0;
+        z-index: 99;
+      }
+    }
+    .go-back a {
+      right: auto;
+    }
+    .lavo-icon-arrow {
+      &:before {
+        padding: 10px;
+        border-radius: 50%;
+      }
+      &:active {
+        color: white;
+        &:before {
+          background-color: #05a4ff;
+        }
+      }
+    }
+    &.go-back a {
+      padding: .8rem 0;
+    }
+
+    &.left {
+      justify-content: flex-start;
+
+      &.select {
+        position: relative;
+        max-width: 50vw;
+        justify-content: flex-end;
+        .lavo-icon-down-arrow {
+          position: absolute;
+          right: 0;
+        }
+      }
+
+    }
+
+    &.right {
+      justify-content: flex-end;
+    }
+
+  }
+
+  .content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 10px;
+    &.left {
+      justify-content: flex-start;
+    }
+  }
+}
+
+.mapboxgl-ctrl-attrib {
+  display: none;
+}
+
+.ui.full-width.header {
+
+  .item {
+    flex: 1;
+    max-width: 100%;
+  }
+}
+
+

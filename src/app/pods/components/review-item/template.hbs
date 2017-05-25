@@ -1,0 +1,14 @@
+<div class="image">
+  <img src="{{review.reviewer.avatarUrl}}">
+</div>
+<div class="content">
+  <div class="sub header"> {{review.reviewer.name}} {{review.reviewer.surname}} </div>
+  <div class="header">{{truncate review.body 60}}</div>
+</div>
+
+<div class="rate">{{review.rating}}</div>
+<div class="extra">
+  <span><i class="lavo-icon-clock icon"></i>{{moment-from-now review.createdAt}}</span>
+  <span><i class="lavo-icon-like icon"></i>{{pluralize review.likesCount 'like'}}</span>
+  <span><i class="lavo-icon-comment icon"></i>{{pluralize review.commentsCount 'comment'}}</span>
+</div>

@@ -1,0 +1,8 @@
+.reviews {
+  margin: 1em 1em 0;
+  overflow-y: scroll;
+
+  .ui.card:not(:last-child) {
+    margin-bottom: 1em;
+  }
+}

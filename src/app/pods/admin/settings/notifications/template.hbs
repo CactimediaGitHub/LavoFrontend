@@ -1,0 +1,26 @@
+<div class="ui padded layout notifications">
+  <div class="header content">
+    <div class="ui header header-default-height">
+      {{#link-to (constant "ROUTE_ADMIN_SETTINGS") class='item' tagName='div'}}
+        <i class="lavo-icon-arrow icon"></i>
+      {{/link-to}}
+      <div class="content">Notifications</div>
+      <div class="item"></div>
+    </div>
+  </div>
+  <div class="content" id="notifications_list">
+    {{#if (eq model.length 0)}}
+      <div class="content">
+        <div class="header _notification">
+          <i class="lavo-icon-ring icon"></i>
+          <span>No Notifications</span>
+        </div>
+      </div>
+    {{else}}
+      {{#each model as |item|}}
+        {{notification-item notification=item}}
+      {{/each}}
+      {{#infinity-loader infinityModel=model scrollable="#notifications_list" triggerOffset=200 }}{{/infinity-loader}}
+    {{/if}}
+  </div>
+</div>

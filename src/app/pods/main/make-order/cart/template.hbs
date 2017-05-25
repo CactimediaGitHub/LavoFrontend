@@ -1,0 +1,105 @@
+<div class="ui padded layout orders">
+
+  <div class="header content promotion-page">
+    <div class="ui header header-default-height cart-header">
+      <div class="item">
+        {{#link-to (constant 'ROUTE_MAKE_ORDER_CHECKOUT')}}
+          <i class="lavo-icon-arrow icon"></i>
+        {{/link-to}}
+      </div>
+      <div class="content">Your cart</div>
+      <div class="item"></div>
+    </div>
+  </div>
+
+  <div class="content">
+    {{#each model.orderItemsGroupedByService as |item|}}
+      <div class="ui list header">{{item.service.name}}</div>
+
+      <div class="ui tiled list">
+        {{#each item.orderItems as |orderItem|}}
+          <div class="item">
+            <span>
+              <span>
+                {{orderItem.inventoryItem.item.name}}<br>
+                <small>{{orderItem.inventoryItem.itemType.name}}</small>
+              </span>
+              <span class="ui counter">{{orderItem.quantity}}</span>
+            </span>
+          </div>
+        {{/each}}
+      </div>
+    {{/each}}
+    <div class="ui list header">CART SUBTOTAL</div>
+    <div class="ui list">
+      <div class="item">
+        <div class="content">Subtotal</div>
+        <div class="content">
+          <span class="info">
+          AED {{price model.subtotal}}
+          </span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="content">Delivery type</div>
+        <div class="content">
+          <span class="info">
+            {{model.order.shipping.shippingMethod.shippingMethod}}
+          </span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="content">Shipping charge</div>
+        <div class="content">
+          <span class="info">
+            AED {{price model.order.shipping.shippingMethod.shippingCharge}}
+            </span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="content">Address</div>
+        <div class="content">
+          <span class="info">
+            {{model.order.shipping.address.address1}}
+          </span>
+        </div>
+      </div>
+      {{#if model.order.shipping.address.address2}}
+        <div class="item">
+          <div class="content"></div>
+          <div class="content">
+          <span class="info">
+            {{model.order.shipping.address.address2}}
+          </span>
+          </div>
+        </div>
+      {{/if}}
+      <div class="item">
+        {{log model}}
+        <div class="content">Promotion deduction</div>
+        <div class="content">
+          <span class="info">AED {{price model.promotion}}</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="content">Total</div>
+        <div class="content">
+          <span class="info">AED {{price model.total}}</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="content">Phone</div>
+        <div class="content">
+          <span class="info">
+            {{model.order.customer.fullPhone}}</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="footer content">
+    <button class="ui full-width unbordered blue button" disabled={{isPending}} {{action "submit" model.order}}>
+      Continue
+    </button>
+  </div>
+</div>

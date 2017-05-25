@@ -1,0 +1,67 @@
+<div class="ui padded layout order">
+  <div class="header content">
+
+    <div class="ui transparent header header-default-height">
+      <div class="item">
+        {{#link-to (constant "ROUTE_OPEN_BASKET_DELIVERY") classNames="back" tagName="div"}}
+          <i class="lavo-icon-arrow icon"></i>
+        {{/link-to}}
+      </div>
+      <div class="content">Order settings</div>
+      <div class="item"></div>
+    </div>
+
+  </div>
+  <div class="content">
+    <div class="ui list header">PICK UP</div>
+    <div class="ui list border-bottom-none">
+      {{shipping-date-picker
+        date=(object-at 0 model.shipping.pickUp)
+        period=(object-at 1 model.shipping.pickUp)
+        schedules=model.schedules
+        onChange=(route-action "selectPickUp" model.shipping)}}
+        <div class="ui list header">DROP OFF</div>
+
+      {{shipping-date-picker-dropoff
+        date=(object-at 0 model.shipping.dropOff)
+        pickUpDate=(object-at 0 model.shipping.pickUp)
+        pickUpPeriod=(object-at 1 model.shipping.pickUp)
+        shippingDeliveryPeriod=model.order.shipping.shippingMethod.deliveryPeriod
+        period=(object-at 1 model.shipping.dropOff)
+        schedules=model.schedules
+        onChange=(route-action "selectDropOff" model.shipping)}}
+    </div>
+
+    <div class="ui list header">ADDRESS</div>
+    <div class="ui list purple">
+      {{#each model.addresses as |address|}}
+        {{#swiping-list-item
+        fixed=(or address.isDefault (eq model.shipping.address.id address.id))}}
+          {{ui-radio
+          icon="map-marker"
+          label=address.humanName
+          value=address.id
+          groupValue=controllerSelectedAddressId
+          changed=(route-action "selectAddress" model.shipping address)}}
+          <div class="remove-address" {{action (route-action 'removeAddress' model.addresses address)}}><span>Remove</span></div>
+        {{/swiping-list-item}}
+      {{/each}}
+    </div>
+
+    {{#link-to
+    (constant "ROUTE_ADDRESS_CREATE")
+    (query-params redirectTo=(constant "ROUTE_OPEN_BASKET_SHIPPING") redirectToParam=model.order.vendor.id)
+    classNames="ui button unbordered full-width" tagName="div"}}
+      ADD NEW
+    {{/link-to}}
+
+  </div>
+
+</div>
+<div class="footer content">
+<button class="ui full-width unbordered blue button" {{action "requestBasket" model.order}}>
+  REQUEST OPEN BASKET
+</button>
+</div>
+
+

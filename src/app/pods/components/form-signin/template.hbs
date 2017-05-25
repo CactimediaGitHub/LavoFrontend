@@ -1,0 +1,19 @@
+{{#if errorMessage}}
+  {{ui-alert message=errorMessage}}
+{{else}}
+  <div class="lavo-logo"></div>
+{{/if}}
+
+{{ui-input placeholder="Email" type="email" model=email classNames="field no-bot-border placeholder-dark" autocomplete="off"}}
+
+{{ui-input placeholder="Password" type="password" model=password classNames="field placeholder-dark" autocomplete="off"}}
+
+<button type="submit" class="ui small unbordered full-width purple button">
+  Login
+</button>
+
+<div class="fields-footer">
+  {{#link-to "auth.forgot" classNames="forgot-label"}}
+    <i class="lavo-icon-question icon"></i> <span>Forgot password?</span>
+  {{/link-to}}
+</div>

@@ -1,0 +1,22 @@
+.ui.select {
+  border: 0;
+  background: transparent;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: 0;
+  text-align: right;
+  color: #05a4ff;
+  -webkit-appearance: none;
+  position: relative;
+}
+
+.ui.gray.select {
+  padding: 1rem 3rem 1rem 0;
+  color: #a8a8a8;
+}
+
+.select-wrapper{
+  padding-left: 1em;
+  color: $lightBlue;
+  vertical-align: middle;
+}

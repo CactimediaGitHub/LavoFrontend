@@ -1,0 +1,23 @@
+<div class="content">
+  <div class="inventory-item-icon" style="background-image:url({{orderItem.inventoryItem.item.icon.url}})">
+  </div>
+  <div class="title">
+    <span>{{orderItem.inventoryItem.item.name}}</span><br>
+
+    <span class="grey">{{orderItem.inventoryItem.itemType.name}}</span><br>
+    <span class="grey">{{orderItem.inventoryItem.service.name}}</span>
+
+  </div>
+    <div class="counter-place">
+      <div class="content">
+        {{input type="number" value=orderItem.quantity}}
+      </div>
+    </div>
+</div>
+<div class="content">
+  <div class="price">{{price orderItem.inventoryItem.price}} AED</div>
+</div>
+<div class="content">
+  <div class="action action-ios" {{action (route-action "decrease" orderItem)}}>-</div>
+  <div class="action action-ios" {{action (route-action "increase" orderItem)}}>+</div>
+</div>

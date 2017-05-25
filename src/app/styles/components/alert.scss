@@ -1,0 +1,37 @@
+.ui.alert {
+  font-size: 1rem;
+  border: 1px solid transparent;
+  border-radius: .1rem;
+  display: flex;
+  flex-direction: row;
+  padding: .65rem .9rem .75rem;
+  align-items: center;
+  justify-content: flex-start;
+  font-weight: 100;
+  margin-bottom: 1rem;
+
+  .icon {
+    margin-right: .8em;
+  }
+
+  .content {
+    font-size: .9em;
+    display: flex;
+    align-items: flex-start;
+    word-wrap: break-word;
+    white-space: pre-line;
+    text-align: center;
+  }
+
+  &, &.error {
+    border-color: #ee7474;
+    background-color: #ffe9e9;
+    color: #ee7474;
+  }
+
+  &.success {
+    border-color: #3cb878;
+    background-color: #e7f4d3;
+    color: #3cb878;
+  }
+}

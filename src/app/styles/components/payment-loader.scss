@@ -1,0 +1,96 @@
+.ui.modal {
+  &.payment-loader {
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+    position: relative;
+    padding: 0;
+    border: none;
+    margin: 0;
+    max-width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .outer-circle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 1px dotted #81d1ff;
+      background: #fff;
+      height: 180px;
+      width: 180px;
+    }
+
+    .animated-circle {
+      width: 130px;
+      height: 130px;
+      background: #d9f1ff;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      animation: bounceInOwn 2s;
+      animation-iteration-count: infinite;
+
+      .white-dot {
+        width: 30px;
+        height: 30px;
+        background: #05a4ff;
+        border-radius: 50%;
+      }
+    }
+
+    .animated-circle-new {
+      width: 130px;
+      height: 130px;
+      background: #1eadff;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      animation: bounceInOwn 2s;
+      animation-iteration-count: infinite;
+
+      .white-dot {
+        width: 30px;
+        height: 30px;
+        background: #ffffff;
+        border-radius: 50%;
+      }
+    }
+
+    .wait-title {
+      font-size: 18px;
+      color: #ffffff;
+      text-align: center;
+      font-weight: 100;
+      line-height: 23px;
+      position: absolute;
+      bottom: 20%;
+      width: 100%;
+      left: 0;
+    }
+  }
+}
+
+@keyframes bounceInOwn {
+  0% {
+    width: 130px;
+    height: 130px;
+  }
+
+  60% {
+    width: 80px;
+    height: 80px;
+  }
+
+  100% {
+    width: 130px;
+    height: 130px;
+  }
+}

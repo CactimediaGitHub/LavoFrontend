@@ -1,0 +1,16 @@
+{{yield}}
+<div class="{{wrapClasses}}">
+  <select class="ui select" onchange= {{action "setValue" value="target.value"}}>
+    <option value="" selected disabled>{{placeholder}}</option>
+    {{#if values}}
+      {{#each-in formattedValues as |key value|}}
+        <option value="{{value}}" selected={{eq value currentValue}}>
+          {{key}}
+        </option>
+      {{/each-in}}
+    {{/if}}
+  </select>
+  {{#if showDropdownIcon}}
+    <i class="lavo-icon-down-arrow icon"></i>
+  {{/if}}
+</div>

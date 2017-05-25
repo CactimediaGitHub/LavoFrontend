@@ -1,0 +1,21 @@
+<div class="ui blue blue-circle modal-box">
+  <div class="content">
+    <div class="outer-circle">
+      <div class="animated-circle">
+        <i class="lavo-icon-tick icon"></i>
+      </div>
+    </div>
+
+    <div class="caption">
+      Transaction Successful!
+    </div>
+    <div class="caption">
+      Credits added : {{model.creditsAmount}} AED
+    </div>
+  </div>
+  <div class="footer">
+    {{#link-to (constant "ROUTE_SETTINGS_CREDITS") class="ui full-width unbordered blue button"}}
+      Go to credits
+    {{/link-to}}
+  </div>
+</div>

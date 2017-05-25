@@ -1,0 +1,10 @@
+<div class="content scrollable">
+
+  {{#each model.orders as |order|}}
+    {{#link-to (constant (if (and order.openbasket (eq order.state (constant "ORDER_STATUS_UPDATING"))) "ROUTE_ADMIN_ORDER_UPDATE" "ROUTE_ADMIN_ORDER_SHOW")) order.id tagName="div"}}
+      {{order-item order=order classNames="ui smallest card" isNewOrder=true}}
+    {{/link-to}}
+  {{/each}}
+  {{#infinity-loader infinityModel=orders triggerOffset=200 scrollable=".scrollable"}}{{/infinity-loader}}
+
+</div>

@@ -1,0 +1,26 @@
+<div class="close button-close" {{action "close"}}>
+  {{#link-to (constant "ROUTE_AUTH_SIGNIN") class="nodecoration-white"}}
+    <i class="lavo-icon-cross-01" ></i>
+  {{/link-to}}
+</div>
+
+<div class="content">
+    <div class="outer-circle">
+        <div class="animated-circle">
+            <i class="lavo-icon-tick icon"></i>
+        </div>
+    </div>
+
+    <div class="caption">
+        You have successfully signed up.<br>
+        Please, check your mailbox for verification e-mail.
+    </div>
+</div>
+<div class="footer">
+    {{#link-to (constant "ROUTE_AUTH_SIGNIN")
+      (query-params modalSuccessfulRegistration="undefined")
+      classNames="ui button full-width unbordered blue"
+      tagName="button"}}
+        Sign in
+    {{/link-to}}
+</div>

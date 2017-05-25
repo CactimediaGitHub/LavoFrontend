@@ -1,0 +1,9 @@
+platforms/*
+/www
+plugins/*
+.DS_Store
+npm-debug.log
+
+# Editors and IDEs
+*.sublime*
+.idea/

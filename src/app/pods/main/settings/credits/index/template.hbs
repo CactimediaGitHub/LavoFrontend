@@ -1,0 +1,28 @@
+<div class="ui padded layout credits" style="position: absolute; z-index: 10000;">
+  <div class="header content">
+    <div class="ui transparent header header-default-height credits-home">
+      <div class="item">
+        {{#link-to 'main.settings' classNames="back" tagName="div"}}
+          <i class="lavo-icon-arrow icon"></i>
+        {{/link-to}}
+      </div>
+      <div class="content">Credits</div>
+      <div class="item"></div>
+    </div>
+      <div class="credit-subtitle">
+          Account credits
+      </div>
+      <h1>{{price model.creditsAmount}}</h1>
+  </div>
+  <div class="content">
+    <div class="ui list header">
+      <i class="lavo-icon-credit-card icon"></i> {{model.page.title}}
+    </div>
+    <p>{{model.page.body}}</p>
+  </div>
+  <div class="footer content">
+    {{#link-to 'main.settings.credits.buy' class='ui blue unbordered full-width button' tag='div'}}
+      <i class="lavo-icon-cart icon"></i> Buy credits
+    {{/link-to}}
+  </div>
+</div>

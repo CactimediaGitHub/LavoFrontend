@@ -1,0 +1,177 @@
+.mapboxgl-map {
+  flex: 1;
+  height: 100%;
+  overflow: initial;
+}
+
+.mapboxgl-popup {
+  top: -7vh;
+}
+
+.mapboxgl-popup-content {
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+.mapboxgl-popup-tip {
+  display: none;
+}
+
+.ui.card.login {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+
+  &.info{
+    .ui.button{
+      margin-right: .9em;
+    }
+
+    .button-close{
+      position: relative;
+      z-index: 200;
+    }
+  }
+}
+
+.ui.card.fill-profile .sub-header {
+  font-size: .8rem;
+}
+
+.ui.layout.home {
+  .ui.header {
+    .content {
+      padding: 0 0.5em;
+    }
+
+    input.search {
+      width: 100%;
+      border: none;
+      color: #05a4ff;
+      padding-top: 0;
+    }
+
+    .cancel-search{
+      padding-right:.8em;
+    }
+  }
+
+  & > .content:not(.header):not(.footer):not(.tabs):not(.bottom) {
+    display: flex;
+    flex-direction: column;
+    transform:none!important;
+    will-change:initial!important;
+  }
+
+}
+
+.blue-link {
+  color: $lightBlue!important;
+  padding-right: 0;
+  margin-left: 1rem;
+}
+.list-v.ui.cards .item{
+  padding-bottom: 15px !important;
+  margin-bottom:15px !important;
+  min-height: 120px;
+  clear: both;
+  position: relative;
+  top: 12px;
+}
+
+.list-v .image-container {
+  width: 40%;
+  min-height: 115px;  
+  max-height: 115px;  
+  height: 115px;  
+  float: left;
+  position: relative;
+  img {
+    max-width: 100%;
+    height: 100%;
+  }
+}
+
+.double .image-container {
+  width: 40%;
+  min-height: 93px;
+  max-height: 93px;
+  float: left;
+  position: relative;
+  img {
+    max-width: 100%;
+    height: 100%;
+  }
+}
+.list-v ember-view.item{
+  clear: both;
+}
+.list-v .tiles_container {
+  width: 100%;     
+}
+.tiles_container {
+  width: 100%;
+  background: white; 
+}
+
+.head_txt {
+  color: #585a5a;
+  padding: 10px 10px;
+  font-size: 18px;
+}
+
+.bg_grey {
+  background: #eeeeee;
+}
+
+.header.content a {
+  text-decoration: none !important;
+}
+
+.ui.layout.main > .content .header.content .ui.header .icon-counter .icon {
+  font-size: 20px;
+}
+
+.ui.layout.main > .content .header.content .ui.header.main-home{padding-top: 0px;}
+
+.ui.layout.main > .content .header.content .ui.header.main-home > *{padding-top: 10px;}
+
+.double .image-container img{height:auto !important;}
+
+@media screen and (max-width: 699px) and (min-width: 320px) {
+  .double .image-container {
+    width: 40%;
+    min-height: 78px;
+    max-height: 78px;
+    float: left;
+    position: relative;
+    img {
+      max-width: 100%;
+      height: 100%;
+    }
+  }  
+}
+
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+
+  .double .image-container {
+    width: 40%;
+    min-height: 190px;
+    max-height: 190px;
+    float: left;
+    position: relative;
+    img {
+      max-width: 100%;
+      height: 100%;
+    }
+  } 
+}
+.clearfix{
+   clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}

@@ -1,0 +1,16 @@
+<div class="ui padded layout auth">
+  <div class="header content">
+    <div class="ui header header-default-height authorization-page">
+      <div class="item">
+        {{#link-to (constant "ROUTE_AUTH_SIGNIN") classNames="ui transparent unbordered go-back button"}}
+          <i class="lavo-icon-arrow icon"></i>
+        {{/link-to}}
+      </div>
+      <div class="content">Forgot password</div>
+      <div class="item"></div>
+    </div>
+  </div>
+  <div class="content">
+    {{form-forgot onSubmit=(route-action "resetPassword")}}
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<div class="reviews">
+  {{#each model as |review|}}
+    {{#link-to (constant "ROUTE_SHOW_REVIEW") review.id tagName="div"}}
+      {{review-item review=review}}
+    {{/link-to}}
+  {{/each}}
+</div>

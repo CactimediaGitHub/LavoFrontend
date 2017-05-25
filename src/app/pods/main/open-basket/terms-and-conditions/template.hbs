@@ -1,0 +1,17 @@
+<div class="ui padded layout orders info">
+    <div class="header content">
+        <div class="ui header header-default-height">
+            <div class="item" {{action (route-action 'back')}}>
+              <i class="lavo-icon-arrow icon"></i>
+            </div>
+            <div class="content">{{model.title}}</div>
+            <div class="item"></div>
+        </div>
+    </div>
+    <div class="content">
+      {{{model.body}}}
+    </div>
+    <div class="ui full-width unbordered button">
+        <button class="ui full-width unbordered blue button" {{action (route-action 'agree')}}>I agree</button>
+    </div>
+</div>

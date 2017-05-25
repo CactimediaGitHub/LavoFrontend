@@ -1,0 +1,64 @@
+.ui.header-filter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  font-size: 1rem;
+  font-weight: 100;
+  z-index: 1;
+   border-top: 1px solid #cccccc;
+   border-bottom: 1px solid #cccccc;
+  
+  &.filter-history {
+    padding-right: 0 !important;
+    select {
+      padding-right: 3rem !important;
+      & + .icon {
+        right: .5rem !important;
+      }
+    }
+    .left {
+      justify-content: flex-end;
+      padding: .8rem 0 .4rem;
+    }
+  }
+
+  .item {
+    .icon {
+      margin: 0;
+      color: $lightBlue;
+      vertical-align: text-bottom;
+    }
+  }
+
+  .text {
+    color: #555757;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-right: .5em;
+    font-size: 1.1em;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .icon {
+    color: #7a88d0;
+    font-size: 1.2em;
+    margin-right: .1em;
+    padding-left: 1em;
+    &.lavo-icon-ring {
+      padding-left: 0;
+      & + .ui.counter {
+        margin: 0;
+        display: inline-block;
+        padding-right: .2rem !important;
+      }
+    }
+
+    @extend .clickable;
+  }
+}

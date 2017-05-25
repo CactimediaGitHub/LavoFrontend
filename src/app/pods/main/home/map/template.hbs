@@ -1,0 +1,9 @@
+{{x-mapbox-map
+options=model.mapOptions
+sources=model.mapSources
+layers=model.mapLayers
+onload=(route-action "onMapLoad")
+onmove=(route-action "onMapMove")
+onclick=(route-action "onMapClicked")
+onsourcesadded=(route-action "onMapSourcesAdded")
+}}

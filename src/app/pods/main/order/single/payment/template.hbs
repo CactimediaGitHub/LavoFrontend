@@ -1,0 +1,131 @@
+<div class="ui padded layout order">
+    <div class="header content">
+
+        <div class="ui transparent header header-default-height margined">
+            <div class="item">
+              {{#link-to (constant "ROUTE_ORDER_SINGLE_APPROVE") model.order.id classNames="back" tagName="div"}}
+                  <i class="lavo-icon-arrow icon"></i>
+              {{/link-to}}
+            </div>
+            <div class="content">
+              {{#if model.order.openbasket}}
+                Order settings
+              {{else}}
+                Checkout
+              {{/if}}
+            </div>
+            <div class="item"></div>
+        </div>
+    </div>
+    <div class="content keyboard-scroll">
+        <div class="ui list header">SELECT CARD</div>
+        <div class="ui list">
+          {{#each model.cards as |card|}}
+            {{#swiping-list-item
+            fixed=(or model.isPaymentSplit (eq model.order.numberCard card.number))}}
+              {{#ui-radio
+              value=card.number
+              isUncheckable=true
+              changed=(route-action "selectCard" model.order card)
+              groupValue=model.order.numberCard}}
+                <span class="card-nickname">{{card.nick}}</span><span class="black"> {{card.number}}</span>
+              {{/ui-radio}}
+              <div class="remove-address"
+                {{action (route-action "removeCard" model.cards card)}}>
+                <span>Remove</span>
+              </div>
+            {{/swiping-list-item}}
+          {{/each}}
+        </div>
+
+      {{#link-to
+      (constant "ROUTE_CARD_CREATE")
+      (query-params redirectTo=(constant "ROUTE_ORDER_SINGLE_PAYMENT") redirectToParam=model.order.vendor.id)
+      tagName="div"
+      classNames="ui full-width unbordered button button-with-icon"}}
+        <i class="lavo-icon-credit-card icon"></i>
+        ADD NEW CARD
+      {{/link-to}}
+
+      <div class="ui list header">OTHER PAYMENT METHODS</div>
+      <div class="ui list">
+        {{#ui-radio
+        disabled=(or (not model.canUseCredits) model.isPaymentSplit )
+        value=(constant "CHECKOUT_TYPE_CREDITS")
+        isUncheckable=true
+        changed=(route-action "selectCheckoutMethod" model.order model.cards)
+        groupValue=model.order.checkoutType}}
+          {{#if model.canUseCredits}}
+            Lavo credits {{price model.order.amountOfCredits}} AED
+          {{else}}
+            Lavo credits (not enough)
+          {{/if}}
+        {{/ui-radio}}
+
+        {{ui-radio
+          label="Cash"
+          value=(constant "CHECKOUT_TYPE_CASH")
+          isUncheckable=true
+          disabled=model.isPaymentSplit
+          changed=(route-action "selectCheckoutMethod" model.order model.cards)
+          groupValue=model.order.checkoutType}}
+      </div>
+
+      <div class="ui list header payment-split">
+        PAYMENT SPLIT {{if (eq model.cards.length 0) '(no credit cards)'}}
+        {{ui-radio
+        value=true
+        isUncheckable=true
+        disabled=(eq model.cards.length 0)
+        groupValue=model.isPaymentSplit
+        changed=(route-action "setPaymentSplit" model.order model.cards)}}
+      </div>
+      <div class="ui list payment-split">
+        {{#if model.isPaymentSplit}}
+          <div class="item">
+            <div class="content">
+              <span>Card</span> {{model.order.card.nick}}
+            </div>
+            <div class="amount">
+              {{price model.order.amountOfCardCashForPartialPayment}}
+              AED
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <span>Lavo Credits</span> {{price model.order.amountOfRemainingCredits}} Remaining
+            </div>
+            <div class="amount">
+              {{ui-number
+              value=model.amountOfCreditsForPartialPayment
+              min=0
+              max=(price model.maximumAmountOfCredits)
+              changed=(route-action "setAmountOfCreditsForPartialPayment" model.order)}}
+              <span>AED</span>
+            </div>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+    <div class="footer content">
+        <div class="ui full-width unbordered button">
+            <button class="ui full-width unbordered blue button" disabled={{isPending}} {{action "submit" model.order (constant "ORDER_STATUS_PROCESSING")}}>Next</button>
+        </div>
+    </div>
+</div>
+{{#if isPending}}
+  <div class="lm-container">
+    <div class="ui modal payment-loader">
+      <div class="outer-circle">
+        <div class="animated-circle">
+          <div class="white-dot"></div>
+        </div>
+      </div>
+
+      <div class="wait-title">
+        Please, wait while payment is processing...
+      </div>
+
+    </div>
+  </div>
+{{/if}}

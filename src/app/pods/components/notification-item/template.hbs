@@ -1,0 +1,11 @@
+<div class="image">
+  <i class="lavo-icon-ring icon"></i>
+</div>
+<div class="content">
+  <div class="header">
+    {{#link-to (constant "ROUTE_ORDER_SINGLE_VIEW") notification.orderId (query-params modalOrderCancel="undefined") tagName="div"}}
+      {{notification.message}}
+    {{/link-to}}
+  </div>
+  <div class="sub header"><i class="lavo-icon-clock icon"></i> {{date}}</div>
+</div>

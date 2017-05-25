@@ -1,0 +1,106 @@
+.ui.button {
+  cursor: pointer;
+  display: inline-block;
+  min-height: 2em;
+  outline: none;
+  vertical-align: middle;
+  background-color: #ffffff;
+  color: #555757;
+  border: 1px solid #ccc;
+  border-radius: .1rem;
+  padding: .78571429em 1.5em;
+  text-transform: none;
+  text-shadow: none;
+  font-weight: 100;
+  line-height: 1.95em;
+  font-style: normal;
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: .055em;
+  user-select: none;
+
+  @extend .clickable;
+
+  &[disabled] {
+    pointer-events: none;
+  }
+}
+
+.ui.button:active,
+.ui.active.button:active {
+  background-color: #ebebeb;
+  box-shadow: none;
+}
+
+.ui.smaller.button {
+  font-size: .9rem;
+  padding: .45rem 1rem .35rem;
+}
+
+.ui.small.button {
+  font-size: 1.1rem;
+  padding: .35rem 1rem .35rem;
+}
+
+.ui.button,
+.ui.middle.button {
+  font-size: 1rem;
+  padding: .7em .8em;
+}
+
+.ui.full-width.button {
+  width: 100%;
+}
+
+.ui.button.padded-bottom {
+  margin-bottom: 1em;
+}
+
+.ui.button.uppercase {
+  text-transform: uppercase;
+}
+.ui.button.disabled{
+  background-color: #c0c2ce;
+}
+.ui.button.transparent{
+  color:rgba(white, .8);
+}
+
+
+.ui.unbordered.button {
+  border: 0;
+}
+
+.ui.button-with-icon {
+  color: $lightBlue;
+  .icon {
+    padding-right: .3em;
+    vertical-align: sub;
+    font-size: 1.6em;
+  }
+}
+
+.button-close {
+  margin: -1em;
+  padding: 1.7em;
+}
+
+@mixin ui_button($className, $backgroundColor, $textColor:white){
+  .ui.button.#{$className}{
+    color:$textColor;
+    background-color: $backgroundColor;
+    transition:all .2s ease;
+    &:active{
+      background-color: darken($backgroundColor, 10%);
+    }
+  }
+}
+
+@include ui_button("blue",    #33b5ff);
+@include ui_button("purple",  #8794d5);
+@include ui_button("red",     #ed7676);
+@include ui_button("facebook",#4e69a2);
+@include ui_button("grey",    #e0e0e0);
+@include ui_button("green",   #8ecfa6);
+@include ui_button("violet",  $violet);
+

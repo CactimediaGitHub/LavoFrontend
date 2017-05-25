@@ -1,0 +1,19 @@
+<div class="ui padded layout orders view-order ">
+    <div class="header content nobg">
+        <div class="ui header header-default-height margined">
+            <div class="item">
+                {{#link-to (constant 'ROUTE_VENDOR_GALLERY')}}
+                    <i class="lavo-icon-arrow icon"></i>
+                {{/link-to}}
+            </div>
+            <div class="content">{{model.vendor.name}} on map</div>
+            <div class="item"></div>
+        </div>
+    </div>
+    <div class="content">
+        {{x-mapbox-map
+        options=model.mapOptions
+        sources=model.mapSources
+        layers=model.mapLayers}}
+    </div>
+</div>

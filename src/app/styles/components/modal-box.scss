@@ -1,0 +1,119 @@
+.ui.modal-box {
+  background-color: #7a88d0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+
+
+  &.order-cancel.order-cancel{
+    background-color: rgba(122,136,208,.9);
+
+    .outer-circle{
+      .animated-circle{
+        background-color:white;
+      }
+
+    }
+
+  }
+
+  .close {
+    position: absolute;
+    top: 1.9rem;
+    right: 1.5rem;
+    color: white;
+    padding: 1em;
+    margin: -1em;
+  }
+
+  .content {
+    width: 100vw;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+
+    .lavo-icon-lostconnection {
+      color: #ee7474;
+      font-size: 2.7em;
+    }
+
+    .lavo-icon-cross-01 {
+      color: #ee7474;
+      font-size: 2.7em;
+    }
+
+    .lavo-icon-tick {
+      font-size: 2.7em;
+      color: white;
+    }
+
+    .lavo-icon-lock {
+      font-size: 2.7em;
+      color: #7a88d0;
+    }
+
+    .lavo-icon-trash {
+      font-size: 2.7em;
+      color: #ed7676;
+    }
+
+    .outer-circle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 500rem;
+      border: .1em dotted rgba(white, .3);
+      //background-color: rgba(white, .6);
+      height: 30vh;
+      width: 30vh;
+      margin-top: 2.1rem;
+    }
+
+    .animated-circle {
+      width: 21vh;
+      height: 21vh;
+      padding: .8em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 500rem;
+      background-color: white;
+    }
+
+    .caption {
+      text-align: center;
+      margin-top: 1.4rem;
+      line-height: 1.6;
+    }
+  }
+
+  .footer {
+    width: 100vw;
+  }
+}
+
+.ui.blue.modal-box {
+  background-color: #05a4ff;
+  z-index:1001;
+}
+
+.ui.transparent.purple.modal-box {
+  background-color: rgba(#7a88d0, .7);
+}
+
+.ui.blue-circle.modal-box {
+
+  .animated-circle {
+    background-color: rgba(white, .1);
+  }
+}

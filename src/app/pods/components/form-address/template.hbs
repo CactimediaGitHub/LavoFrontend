@@ -1,0 +1,28 @@
+<div class="header content">
+  <div class="ui full-width header">
+    <div class="left item">Add address</div>
+    <div class="right item" {{action "done" address}}>Cancel</div>
+  </div>
+</div>
+<div class="content keyboard-scroll">
+  <div class="ui list header">ADDRESS</div>
+  <div class="ui list">
+    <div class="item">
+      <div class="content">Country</div>
+      <select class="ui select">
+        <option value="AE">United Arab Emirates</option>
+      </select>
+    </div>
+    {{ui-input-extended model=address valuePath="address1" placeholder="Address line 1"}}
+    {{ui-input-extended model=address valuePath="address2" placeholder="Address line 2"}}
+    {{ui-input-extended model=address valuePath="city" placeholder="City"}}
+    {{ui-input-extended model=address valuePath="nearestLand" type="number" placeholder="Nearest Landmark"}}
+    {{ui-input-extended model=address valuePath="humanName" placeholder="Address nickname"}}
+  </div>
+</div>
+
+<div class="footer content">
+  <button class="ui unbordered purple button full-width" {{action "save" address}} disabled={{state.isPending}}>
+    Save changes
+  </button>
+</div>

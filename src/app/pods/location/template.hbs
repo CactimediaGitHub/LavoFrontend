@@ -1,0 +1,19 @@
+<div class="ui modal location">
+  <div class="outer-circle">
+    <div class="animated-circle">
+    </div>
+    <div class="white-dot"></div>
+  </div>
+
+  {{#unless hasError}}
+    <div class="wait-title">
+      Please wait while we search your area.
+    </div>
+  {{else}}
+    <div class="wait-title">
+      Unable to fetch location data. <br>
+      Location is set to Dubai, UAE.
+    </div>
+  {{/unless}}
+
+</div>

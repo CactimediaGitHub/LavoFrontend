@@ -1,0 +1,13 @@
+<div class="image">
+  <i class="lavo-icon-cart icon"></i>
+</div>
+<div class="content">
+  <div class="sub header">You added {{quantity}} items</div>
+  {{#if withPromotion}}
+    <div class="sub header">(promotion included)</div>
+  {{/if}}
+  <div class="header">{{total}} AED</div>
+
+</div>
+
+<div class="ui button uppercase" {{action "onButtonClicked"}}>{{actionText}}</div>

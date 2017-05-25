@@ -1,0 +1,64 @@
+<div class="ui padded layout make-order basket order-info">
+  <div class="header content">
+
+    <div class="ui header header-default-height margined">
+      <div class="item">
+        {{#link-to (constant "ROUTE_ADMIN_ORDER_SHOW") model.order.id classNames="back" tagName="div"}}
+          <i class="lavo-icon-arrow icon"></i>
+        {{/link-to}}
+      </div>
+      <div class="content">Update order</div>
+      <div class="item"></div>
+    </div>
+
+  </div>
+
+  <div class="content tabs">
+    <div class="ui tabs">
+      {{#link-to "admin.order.update.select-service" tagName="div" classNames="item"}}
+        <span>{{if model.service model.service.name "Choose service"}}</span>
+        <i class="lavo-icon-more icon"></i>
+      {{/link-to}}
+      {{#link-to "admin.order.update.select-type" tagName="div" classNames="item"}}
+        <span>{{if model.type model.type.name "Choose type"}}</span>
+        <i class="lavo-icon-more icon"></i>
+      {{/link-to}}
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="ui large gridded list basket">
+      {{#each model.orderItems as |orderItem|}}
+        {{slidable-order-item
+        slideLeftAction=(route-action "decrease" orderItem)
+        slideRightAction=(route-action "increase" orderItem)
+        orderItem=orderItem
+        }}
+      {{/each}}
+    </div>
+  </div>
+
+
+  <div class="footer content">
+    <div {{action (route-action "updateBasket" model.order) }} class="mini-card">
+      {{mini-cart
+      quantity=model.order.cpQuantity
+      total=(price model.order.cpTotalWithShipping)
+      actionText="Update"
+      }}
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

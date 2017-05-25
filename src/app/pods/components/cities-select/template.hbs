@@ -1,0 +1,10 @@
+<div class="item">
+  <div class="content">City</div>
+  <div class="select-wrapper">
+    <select class="ui select" onchange={{action "setValue" value="target.value"}}>
+      {{#each CITIES as |city|}}
+        <option value={{city.value}} selected={{eq currentValue city.value}}>{{city.name}}</option>
+      {{/each}}
+    </select>
+  </div>
+</div>

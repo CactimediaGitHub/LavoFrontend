@@ -1,0 +1,92 @@
+<div class="ui padded layout vendor profile">
+  <div class="header content header-default-height"
+       style="background-image: url({{if model.vendor.avatar model.vendor.avatar (constant 'FIXTURE_IMAGE')}})">
+    {{#link-to "main.home" classNames="back" tagName="div"}}
+      <i class="lavo-icon-arrow icon"></i>
+    {{/link-to}}
+
+    <div class="info">
+      <h1>{{model.vendor.name}}</h1>
+      {{#if model.vendor.cachedAverageRating }}
+        <span class="rate">{{model.vendor.cachedAverageRating}}</span>
+        Rating Based on {{model.vendor.cachedTotalReviews}} reviews
+      {{/if}}
+    </div>
+  </div>
+  <div class="content vendor-info">
+    <div class="actions">
+      {{#if (and model.session.isAuthenticated model.vendor.currentUserHasOrders)}}
+        {{#if model.vendor.canReview}}
+          {{#link-to
+          (constant "ROUTE_CREATE_REVIEW")
+          (query-params
+          vendorId=model.vendor.id
+          redirectTo=(constant "ROUTE_VENDOR")
+          redirectToParam=model.vendor.id
+          )
+          tagName="div"
+          classNames="item"}}
+            <i class="lavo-icon-review icon"></i>
+            ADD REVIEW
+          {{/link-to}}
+        {{else}}
+          <div class="item disabled">
+            <i class="lavo-icon-review icon"></i>
+            ADD REVIEW
+          </div>
+        {{/if}}
+
+
+      {{/if}}
+
+      {{#if (xor model.session.isAuthenticated model.vendor.currentUserHasOrders)}}
+        {{#link-to (constant "ROUTE_MAKE_ORDER") model.vendor.id classNames="item" tagName="div"}}
+          <i class="lavo-icon-cart icon"></i>
+          MAKE ORDER
+        {{/link-to}}
+      {{/if}}
+
+      {{#if (not model.session.isAuthenticated)}}
+        {{#link-to (query-params modalNeedLogin=true) classNames="item" tagName="div"}}
+          <i class="lavo-icon-review icon"></i>
+          ADD REVIEW
+        {{/link-to}}
+      {{/if}}
+
+      <a class="item" {{action (route-action 'callVendor' (tel-to model.vendor.phone))}} href="javascript:void(0)">
+        <i class="lavo-icon-phone icon"></i>
+        CALL VENDOR
+      </a>
+
+      {{#link-to (constant "ROUTE_VENDOR_SINGLE_MAP") classNames="item" tagName="div"}}
+        <i class="lavo-icon-marker-full icon"></i>
+        VIEW MAP
+      {{/link-to}}
+
+
+    </div>
+
+    <div class="container">
+      <div class="tabs">
+        {{#link-to (constant "ROUTE_VENDOR_GALLERY") classNames="item" tagName="div"}}
+          GALLERY
+        {{/link-to}}
+        {{#link-to (constant "ROUTE_VENDOR_REVIEWS") classNames="item" tagName="div"}}
+          REVIEWS ({{model.vendor.cachedTotalReviews}})
+        {{/link-to}}
+      </div>
+      {{outlet}}
+    </div>
+
+  </div>
+
+  <div class="footer content">
+    {{#link-to (constant "ROUTE_OPEN_BASKET") model.vendor.id classNames="ui unbordered button"}}
+      Request open basket
+    {{/link-to}}
+
+    {{#link-to (constant "ROUTE_MAKE_ORDER") model.vendor.id classNames="ui blue unbordered button"}}
+        <i class="lavo-icon-cart icon"></i> Make order
+    {{/link-to}}
+  </div>
+</div>

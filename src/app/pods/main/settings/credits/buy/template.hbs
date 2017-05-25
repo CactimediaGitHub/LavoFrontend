@@ -1,0 +1,84 @@
+<div class="ui padded layout buy" style="position: absolute; z-index: 10000">
+  <div class="header content">
+    <div class="ui header header-default-height buy-credits">
+      <div class="item">
+        {{#link-to 'main.settings.credits' classNames="back" tagName="div"}}
+          <i class="lavo-icon-arrow icon"></i>
+        {{/link-to}}
+      </div>
+      <div class="content">Buy credits</div>
+      <div class="item"></div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="ui list header">AMOUNT</div>
+    <div class="ui large gridded list border-bottom-none">
+      <div class="item">
+        <div class="content">{{input type="number" value=model.creditsInDollars focus-out="convertCreditsInDollars"}}</div>
+        <div class="content"></div>
+        <div class="content">
+          <div class="action action-ios" {{action (route-action "decrementCredit" model)}}>-</div>
+          <div class="action action-ios" {{action (route-action "incrementCredit" model)}}>+</div>
+        </div>
+      </div>
+    </div>
+    <div class="ui list header">SELECT CARD</div>
+    <div class="ui large gridded list">
+      {{#each model.cards as |card|}}
+        {{#swiping-list-item
+        fixed=(eq model.card.id card.id)}}
+          {{#ui-radio
+            label=card.name
+            value=card.number
+            isUncheckable=true
+            groupValue=model.selectedCard
+            changed=(route-action "selectCard" model card)}}
+            <span class="card-nickname">{{card.nick}}</span><span class="black"> {{card.number}}</span>
+          {{/ui-radio}}
+          <div class="remove-address"
+            {{action (route-action "removeCard" model.cards card)}}>
+            <span>Remove</span>
+          </div>
+        {{/swiping-list-item}}
+      {{/each}}
+    </div>
+    {{#link-to
+      (constant "ROUTE_CARD_CREATE")
+      (query-params redirectTo=(constant "ROUTE_SETTINGS_CREDITS_BUY") redirectToParam=false)
+      tagName="div"
+      classNames="ui full-width unbordered button button-with-icon"}}
+      <i class="lavo-icon-credit-card icon"></i>
+      ADD NEW CARD
+    {{/link-to}}
+  </div>
+  <div class="footer content">
+    <div class="ui small info card">
+      <div class="image">
+        <i class="lavo-icon-cart icon"></i>
+      </div>
+      <div class="content">
+        <div class="sub header">Total cost</div>
+        <div class="header">{{price model.credits}} AED</div>
+      </div>
+
+      <div class="ui button" {{action (route-action "buy" model)}}>BUY</div>
+    </div>
+  </div>
+</div>
+
+{{#if isPending}}
+  <div class="lm-container">
+    <div class="ui modal payment-loader">
+      <div class="outer-circle">
+        <div class="animated-circle">
+          <div class="white-dot"></div>
+        </div>
+      </div>
+
+      <div class="wait-title">
+        Please, wait while payment is processing...
+      </div>
+
+    </div>
+  </div>
+{{/if}}

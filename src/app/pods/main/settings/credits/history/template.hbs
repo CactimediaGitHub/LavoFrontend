@@ -1,0 +1,58 @@
+<div class="ui padded layout credits" style="position: absolute; z-index: 10000;">
+  <div class="header content" style="background-image: none; background-color: #7a88d0; padding-bottom: 2rem; height: 24vh">
+    <div class="ui transparent header header-default-height">
+      <div class="item">
+        {{#link-to 'main.settings.credits' classNames="back" tagName="div"}}
+          <i class="lavo-icon-arrow icon"></i>
+        {{/link-to}}
+      </div>
+      <div class="content">Payment</div>
+      <div class="item"></div>
+    </div>
+
+    <div class="text">
+      Account balance
+      <h1>{{price model.creditsAmount}}</h1>
+    </div>
+  </div>
+  <div class="tabs content">
+    <div class="ui date-picker">
+      {{#each sortedModel as |m|}}
+        <div class="item {{if (eq m chosenMonth) 'active'}}" {{action 'setSelectedMonth' m}}>{{m.month}}</div>
+      {{/each}}
+    </div>
+  </div>
+  {{#with chosenMonth as |month|}}
+    <div class="content">
+      <div class="ui list header">
+        ORDER DETAILS
+      </div>
+      <div class="ui list">
+        <div class="item">
+          <div class="content">Orders completed</div>
+          <div class="content">
+            <div class="info">{{month.ordersCompleted}}</div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="content">Total transactions</div>
+          <div class="content">
+            <div class="info">AED {{price month.totalTransactions}}</div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="content">Commision</div>
+          <div class="content">
+            <div class="info">{{month.commission}}%</div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="content">Net amount available</div>
+          <div class="content">
+            <div class="info">AED {{price month.netAmount}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/with}}
+</div>

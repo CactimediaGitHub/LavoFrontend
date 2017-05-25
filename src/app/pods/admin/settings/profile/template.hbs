@@ -1,0 +1,47 @@
+<div class="ui padded layout settings">
+
+  <div class="header content">
+    <div class="ui header header-default-heigh  account-settingst">
+      {{#link-to 'admin.settings' class='item' tagName='div'}}
+        <i class="lavo-icon-arrow icon"></i>
+      {{/link-to}}
+      <div class="content">Account settings</div>
+      <div class="item"></div>
+    </div>
+  </div>
+
+  <div class="content keyboard-scroll">
+    <div class="ui user-card">
+      {{avatar-uploader onChanged='avatarDidChange' accept="image/*" modelProperty=model.avatar class="avatar-uploader" }}
+    </div>
+
+    <div class="ui list header">DETAILS</div>
+    <div class="ui list">
+      {{ui-input-extended
+        placeholder="Vendor name"
+        type="text"
+        model=model
+        valuePath="name"
+      }}
+      {{ui-input-extended
+        placeholder="Phone number"
+        type="text"
+        model=model
+        valuePath="phone"
+      }}
+      {{ui-input-extended
+        placeholder="Email"
+        type="text"
+        model=model
+        valuePath="email"
+      }}
+      {{#link-to (constant "ROUTE_ADMIN_SETTINGS_PASSWORD_RESET") class="item blue"}}
+        Change password
+      {{/link-to}}
+    </div>
+  </div>
+
+  <div class="footer content">
+    <div class="ui blue button" {{action 'saveProfile'}}>Save changes</div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+{{#unless state.needVideo}}
+  <div class="ui padded transparent layout intro">
+    <div class="ui navigation container">
+      {{#link-to "main" (query-params isSkipped=true) classNames="ui unbordered skip button"}}Skip{{/link-to}}
+    </div>
+
+    <div class="ui slider container">
+      {{#swiper-container classNames="ui swiper" pagination=true loop=true}}
+        {{#swiper-slide}}
+          <img src="assets/images/intro/intro-1.png">
+        {{/swiper-slide}}
+        {{#swiper-slide}}
+          <img src="assets/images/intro/intro-2.png">
+        {{/swiper-slide}}
+        {{#swiper-slide}}
+          <img src="assets/images/intro/intro-3.png">
+        {{/swiper-slide}}
+        {{#swiper-slide}}
+          <img src="assets/images/intro/intro-4.png">
+        {{/swiper-slide}}
+      {{/swiper-container}}
+    </div>
+
+    <div class="ui buttons container">
+      <button class="ui smaller unbordered full-width facebook button" {{action (route-action "facebookSignIn")}}>Facebook Connect</button>
+      {{#link-to "auth.signup" (query-params modalSuccessfulRegistration="undefined") classNames="ui small sign-up button"}}Sign Up{{/link-to}}
+      {{#link-to "auth.signin" classNames="ui small log-in button"}}Log In{{/link-to}}
+    </div>
+  </div>
+{{/unless}}
+
+{{#if state.needVideo}}
+  {{component (concat 'intro-video-' platform)}}
+{{/if}}
+
+{{#if fbLoading}}
+  {{fb-loading}}
+{{/if}}

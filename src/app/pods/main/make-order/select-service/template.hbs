@@ -1,0 +1,18 @@
+<div class="ui filter">
+  <div class="header">
+    <div class="title">Choose service</div>
+    <div class="action" {{action 'done'}}>Done</div>
+  </div>
+  <div class="content">
+
+    <div class="ui list header">SERVICES</div>
+    <div class="ui list">
+      {{#each model.services as |service|}}
+        {{vendor-service-filter
+        label=service.name
+        value=service.id
+        groupValue=state.filterSelectedServiceIDs}}
+      {{/each}}
+    </div>
+  </div>
+</div>

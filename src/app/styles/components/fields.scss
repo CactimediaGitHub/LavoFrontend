@@ -1,0 +1,142 @@
+.ui.fields {
+  width: 100%;
+  padding: 0 2.442em;
+  margin: 1.53em auto 0;
+
+  .field {
+    width: 100%;
+    background-color: white;
+    color: #555757;
+    font-size: .8em;
+    border: .1em solid #cfcfcf;
+    border-radius: .2em;
+    font-weight: 100;
+    box-sizing: border-box;
+    input, select, textarea {
+      padding: .95em 0 .86em .95em;
+    }
+    &:before {
+      height: 1px;
+      content: "";
+      display: block;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      will-change: opacity;
+      background-color: #bc2f2f;
+      opacity: 0;
+    }
+
+    &.has-error {
+      &:before {
+        transition: all 1s ease;
+        opacity: 1;
+      }
+      background: rgb(251, 242, 242);
+      transition: all 1s ease;
+      &,
+      input, textarea {
+      }
+    }
+
+    &.dropdown {
+      position: relative;
+      select {
+        z-index: 9;
+      }
+      &:after {
+        z-index: 1;
+        color: #05a4ff;
+        content: "\e909";
+        display: inline-block;
+        font-family: 'lavo-icon-set' !important;
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        position: absolute;
+        right: .5rem;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+  textarea {
+    resize: none;
+  }
+
+  input, select, textarea, button {
+    width: 100%;
+    border: 0;
+    background-color: transparent;
+  }
+
+  .ui.button {
+    margin-top: .6em;
+  }
+
+  .ui.select {
+    color: #555757;
+  }
+
+  .no-bot-border {
+    border-bottom: none;
+  }
+
+  .fields-footer {
+    text-align: center;
+    margin-top: .6em;
+
+    .forgot-label {
+      color: #8794d5;
+      font-size: 1.1em;
+      text-decoration: none;
+      margin-left: .1em;
+      margin-top: .6em;
+      font-weight: 100;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
+
+      .icon {
+        margin-right: .4em;
+      }
+
+      :not(.icon) {
+        font-size: .8em;
+      }
+    }
+  }
+
+  .placeholder-dark::-moz-placeholder {
+    color: $darkGrey;
+  }
+
+  .placeholder-dark:-ms-input-placeholder {
+    color: $darkGrey;
+  }
+
+  .placeholder-dark::-webkit-input-placeholder {
+    color: $darkGrey;
+  }
+}
+
+.placeholder-dark input::-moz-placeholder {
+  color: #000;
+}
+
+.placeholder-dark input:-ms-input-placeholder {
+  color: #000;
+}
+
+.placeholder-dark input::-webkit-input-placeholder {
+  color: #000;
+}
+
+

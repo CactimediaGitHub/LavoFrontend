@@ -1,0 +1,19 @@
+<div class="ui filter">
+  <div class="header">
+    <div class="title">Choose service</div>
+    <div class="action" {{action 'done'}}>Done</div>
+  </div>
+  <div class="content">
+
+    <div class="ui list header">SERVICES</div>
+    <div class="ui list">
+      {{#each model.services as |service|}}
+        {{ui-radio
+        label=service.name
+        value=service.id
+        isUncheckable=true
+        groupValue=state.filterSelectedServiceID}}
+      {{/each}}
+    </div>
+  </div>
+</div>

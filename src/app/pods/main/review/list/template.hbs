@@ -1,0 +1,20 @@
+<div class="header content promotion-page">
+  <div class="ui header header-default-height">
+    <div class="item">
+      {{#link-to (constant 'ROUTE_HOME')}}
+      <i class="lavo-icon-arrow icon"></i>
+      {{/link-to}}
+    </div>
+    <div class="content">My reviews</div>
+    <div class="item"></div>
+  </div>
+</div>
+<div class="content {{if model.length '' 'center-text'}}">
+  {{#each model as |item|}}
+    {{#link-to (constant 'ROUTE_SHOW_REVIEW') item tagName="div"}}
+      {{review-item-own review=item}}
+    {{/link-to}}
+  {{else}}
+    No reviews found
+  {{/each}}
+</div>

@@ -1,0 +1,37 @@
+<div class="ui padded layout main">
+
+  <div class="app content">
+    {{outlet}}
+  </div>
+
+  <div class="footer content">
+    <div class="ui footer">
+      {{#link-to (constant "ROUTE_ADMIN_HOME") class='item'}}
+        <i class="lavo-icon-home icon"></i>
+        Home
+      {{/link-to}}
+      {{#link-to (constant "ROUTE_ADMIN_ORDER") class='item'}}
+        <i class="lavo-icon-cart icon"></i>
+        Orders
+      {{/link-to}}
+      {{#link-to (constant "ROUTE_ADMIN_REVIEW") class='item'}}
+        <i class="lavo-icon-review icon"></i>
+        Reviews
+      {{/link-to}}
+      {{#if session.isAuthenticated}}
+        {{#link-to 'admin.settings' class='item'}}
+          <i class="lavo-icon-more icon"></i>
+          More
+        {{/link-to}}
+      {{else}}
+        {{#link-to (query-params modalNeedLogin=true) classNames="item"}}
+          <i class="lavo-icon-more icon"></i>
+          More
+        {{/link-to}}
+      {{/if}}
+      <div class="moving-line">
+
+      </div>
+    </div>
+  </div>
+</div>

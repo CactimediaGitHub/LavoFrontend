@@ -1,0 +1,22 @@
+.ui.layout.notifications {
+  font-size: 1rem;
+  font-weight: 100;
+
+  > .content {
+
+    &.header {
+
+      .ui.header {
+        padding: 2rem .9rem 1.4rem .5rem !important;
+      }
+    }
+
+    &:not(.header) {
+      padding: 1em;
+    }
+  }
+}
+
+#notifications_list {
+  padding-top: 0;
+}

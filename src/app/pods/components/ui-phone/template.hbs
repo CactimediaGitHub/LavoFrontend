@@ -1,0 +1,17 @@
+<div class="item">
+  <div class="content">Phone</div>
+  <div class="select-wrapper">
+    <select class="ui select" onchange={{action "setPrefixPhoneValue" value="target.value"}}>
+      {{#each PREFIX_NUMBERS as |prefixNumber|}}
+        <option value={{prefixNumber}} selected={{eq currentPrefixPhoneValue prefixNumber}}>{{prefixNumber}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <div>
+    {{input
+      type=type
+      valueBinding="model.phone"
+      classNames="form-control profile-text-color"
+      maxlength=7}}
+  </div>
+</div>

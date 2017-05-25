@@ -1,0 +1,23 @@
+.ui.layout.cart {
+
+  .content.header {
+    background-size: cover;
+    text-align: center;
+    z-index: 1;
+
+    .ui.header {
+      padding-top: 1rem;
+    }
+  }
+  .cart-header{
+    padding-top: .5rem!important;
+  }
+
+  .content.header h1 {
+    flex: 1;
+    font-size: 1em;
+    font-weight: 100;
+    margin-top: 2.45em;
+    padding-right: 15vw;
+  }
+}

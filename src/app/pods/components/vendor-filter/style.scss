@@ -1,0 +1,34 @@
+.ui.filter {
+  background-color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 50;
+  font-size: 1rem;
+  overflow: auto;
+  padding-bottom: 3.750rem;
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.6rem 0rem 1.45rem .9rem;
+    color: #05a4ff;
+    height: 5.7vh;
+    font-size: 1em;
+    font-weight: 100;
+    //border-bottom: .1em solid #d4d4d4;
+
+    .action{
+      padding: .8rem 0 .8rem 2.8rem;
+      &:last-child{
+        padding-right: .9rem;
+      }
+    }
+  }
+}
+
+

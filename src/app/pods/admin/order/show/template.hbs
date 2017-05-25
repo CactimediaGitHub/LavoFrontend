@@ -1,0 +1,138 @@
+<div class="ui padded layout orders view-order">
+    {{#if order.openbasket}}
+      <div class="header content open-basket-layout">
+        <div class="ui transparent header header-default-height margined">
+          <div class="item">
+            {{#link-to (constant "ROUTE_ADMIN_ORDER_LIST")}}
+              <i class="lavo-icon-arrow icon"></i>
+            {{/link-to}}
+          </div>
+          <div class="content">
+            Request open basket
+          </div>
+          <div class="item"></div>
+        </div>
+        <div class="content">
+          <div class="vendor-info">
+            <div class="ui small user-card">
+              <div class="avatar">
+                <img src={{order.customer.avatarUrl}}>
+              </div>
+            </div>
+            <h5>Customer</h5>
+            <h3>{{order.customer.email}}</h3>
+          </div>
+        </div>
+      </div>
+    {{else}}
+    <div class="header content nobg ">
+      <div class="ui header header-default-height margined">
+        <div class="item">
+          {{#link-to (constant "ROUTE_ADMIN_ORDER_LIST")}}
+            <i class="lavo-icon-arrow icon"></i>
+          {{/link-to}}
+        </div>
+        <div class="content">View order</div>
+        <div class="item"></div>
+      </div>
+    </div>
+
+    {{/if}}
+  <div class="content">
+    <div class="ui list header">ORDER DETAILS</div>
+    <div class="ui list border-bottom-none">
+      <div class="item">
+        <div class="content">Status</div>
+        <div class="content"><div class="info">{{order.state}}</div></div>
+      </div>
+      <div class="item">
+        <div class="content">Customer name</div>
+        <div class="content"><div class="info">{{order.customer.name}}</div></div>
+      </div>
+      <div class="item">
+        <div class="content">Phone</div>
+        <div class="content"><div class="info">{{order.customer.fullPhone}}</div></div>
+      </div>
+      <div class="item">
+        <div class="content">Created</div>
+        <div class="content"><div class="info">{{moment-from-now order.createdAt}}</div></div>
+      </div>
+      <div class="item">
+        <div class="content">Order number</div>
+        <div class="content"><div class="info">{{order.id}}</div></div>
+      </div>
+      <div class="item">
+        <div class="content">Pickup</div>
+        <div class="content"><div class="info">{{order.shipping.pickUpFormatted}}</div></div>
+      </div>
+      <div class="item">
+        <div class="content">Dropoff</div>
+        <div class="content"><div class="info">{{order.shipping.dropOffFormatted}}</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="content">Address</div>
+        <div class="content"><div class="info">{{order.address.address1}}</div></div>
+      </div>
+      {{#if order.address.address2}}
+        <div class="item">
+          <div class="content"></div>
+          <div class="content"><div class="info">{{order.address.address2}}</div></div>
+        </div>
+      {{/if}}
+      <div class="item">
+        <div class="content">Location</div>
+        <div class="content">
+          <div class="info">
+            {{#link-to (constant "ROUTE_ADMIN_ORDER_SHOW_MAP")}}
+              View on map
+            {{/link-to}}
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="content">Delivery mode</div>
+        <div class="content"><div class="info">{{order.shipping.shippingMethod.shippingMethod}}</div></div>
+      </div>
+      {{#unless order.openbasket}}
+      <div class="item">
+        <div class="content">Total fee</div>
+        <div class="content"><div class="info">{{price total}} AED</div></div>
+      </div>
+      {{/unless}}
+    </div>
+
+    {{#each orderItemsGroupedByService as |item|}}
+      <div class="ui list header">{{item.service.name}}</div>
+      <div class="ui tiled list">
+        {{#each item.orderItems as |orderItem|}}
+          <div class="item">
+            <div class="content breakable">
+              {{orderItem.inventoryItem.item.name}}<br>
+              <small>{{orderItem.inventoryItem.itemType.name}}</small>
+            </div>
+            <div class="content">
+              <div class="ui counter">{{orderItem.quantity}}</div>
+            </div>
+            <div class="green-addon">AED {{price orderItem.inventoryItem.price}}</div>
+          </div>
+        {{/each}}
+    </div>
+    {{/each}}
+    {{#if (eq order.state (constant "ORDER_STATUS_PENDING"))}}
+      {{#if order.openbasket}}
+          <div class="ui full-width blue unbordered button" {{action (route-action 'acceptOpenBasket' order)}}>Accept</div>
+      {{else}}
+          <div class="ui full-width unbordered blue button" {{action (route-action 'handleOrder' order 'ORDER_STATUS_PROCESSING')}}>Accept</div>
+      {{/if}}
+      <div class="ui full-width unbordered button" {{action (route-action 'handleOrder' order 'ORDER_STATUS_CANCELLED')}}>Reject</div>
+    {{else if (eq order.state (constant "ORDER_STATUS_PROCESSING"))}}
+      <div class="ui full-width unbordered violet button" {{action (route-action 'handleOrder' order 'ORDER_STATUS_COMPLETED')}}>Complete</div>
+    {{/if}}
+  </div>
+  <div class="footer content">
+    {{#if (eq order.state (constant "ORDER_STATUS_CANCELLED"))}}
+      <div class="ui full-width unbordered button">cancelled</div>
+    {{/if}}
+  </div>
+</div>

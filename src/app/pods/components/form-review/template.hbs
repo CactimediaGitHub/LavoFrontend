@@ -1,0 +1,31 @@
+<div class="header content margined">
+  <div class="ui header header-default-height">
+    <div class="item" {{action "done" review}}>
+      <i class="lavo-icon-arrow icon" ></i>
+    </div>
+    <div class="content">Add review</div>
+    <div class="item"></div>
+  </div>
+</div>
+<div class="content">
+  <form class="ui fields">
+    {{ui-input model=review valuePath="title" placeholder="Review title" classNames="no-bot-border field placeholder-dark"}}
+
+    {{ui-select
+      model=review
+      valuePath="rating"
+      wrapClasses="dropdown no-bot-border field"
+      values=(range 1 5 true)
+      action="selectRating"
+      placeholder="Rating" }}
+
+    {{ui-textarea model=review valuePath="body" placeholder="Comments" classNames="field placeholder-dark"}}
+  </form>
+
+</div>
+
+<div class="footer content">
+  <div class="ui purple unbordered full-width button" {{action "save" review}} disabled={{state.isPending}}>
+    Publish review
+  </div>
+</div>

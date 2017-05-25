@@ -1,0 +1,41 @@
+.ui.list .item.extended label{
+  display:flex;
+  width:100%;
+  overflow-x:hidden;
+  flex-direction: row-reverse;
+  *{
+    width:auto;
+  }
+  input,.input-value{
+    flex-grow:1;
+    text-align: right;
+    color:#05a4ff;
+    line-height: 2em;
+  }
+
+  .input-label{
+    width: 45%;
+    align-self: center;
+  }
+
+  input{
+    position:absolute;
+    color:transparent;
+    width:100%;
+
+    &:focus{
+      text-align: left;
+      color: black;
+      position: static;
+      display: block;
+
+      &+.input-value{
+
+        &,&+.input-label{
+          display: none;
+        }
+      
+      }
+    }
+  }
+}

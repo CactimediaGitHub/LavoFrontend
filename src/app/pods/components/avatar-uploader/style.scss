@@ -1,0 +1,25 @@
+.avatar-uploader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .cropper-container {
+    width: 100%;
+    height: 50vh;
+
+    .cropper-view-box {
+      border-radius: 50%;
+    }
+  }
+
+  .avatar-buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 15px;
+
+    button {
+      width: 48%;
+    }
+  }
+}

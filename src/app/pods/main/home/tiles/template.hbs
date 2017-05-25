@@ -1,0 +1,21 @@
+{{#vendor-container classNames="double scrollable"}}
+  
+  <div class="text head_txt">
+    {{#unless (is-none model.state.searchResult)}}
+        {{pluralize model.state.searchResult "result"}} found
+    {{else}}
+        Nearby vendors
+    {{/unless}}
+  </div>
+<div class="block"> </div>
+  
+  {{#each model as |vendor|}}
+    {{vendor-item vendor=vendor onClick=(route-action "goToVendor" vendor.id)}}
+  {{else}}
+    <div class="center-text">
+      No vendors found
+    </div>
+  {{/each}}
+
+  {{#infinity-loader infinityModel=model triggerOffset=200 scrollable=".scrollable"}}{{/infinity-loader}}
+{{/vendor-container}}

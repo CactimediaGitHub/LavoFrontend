@@ -1,0 +1,38 @@
+.ui.pagination {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  padding: 1rem;
+
+  .item {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    height: 2.5rem;
+    max-width: 2.5rem;
+    text-align: center;
+    border: 1px solid #d7d7d7;
+    border-radius: 0.15rem;
+    color: #707271;
+    background:white;
+
+  }
+
+  ul {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    margin: 0 0.3rem;
+  }
+
+  li.current {
+    background: #ebebeb;
+  }
+}

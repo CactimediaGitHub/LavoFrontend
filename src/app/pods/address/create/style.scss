@@ -1,0 +1,18 @@
+.ui.layout.new-address {
+
+    & > .header {
+      background-image: none;
+      height: 9.4vh;
+
+      .ui.header {
+        height: 100%;
+      }
+    }
+
+    & > .footer {
+
+      .ui.button {
+        padding: .58em .8em;
+      }
+    }
+}

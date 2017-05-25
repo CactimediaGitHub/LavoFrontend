@@ -1,0 +1,25 @@
+<div class="ui filter">
+  <div class="header">
+    <div class="title">Price filter</div>
+    <div class="action" {{action 'done'}}>Done</div>
+  </div>
+  <div class="content">
+    <div class="ui list header">SERVICE TYPE</div>
+    <div class="ui list">
+
+      {{#each services as |service|}}
+        {{vendor-service-filter label=service.name value=service.id groupValue=selectedServiceIds}}
+      {{/each}}
+
+    </div>
+
+    <div class="ui list header">ITEM</div>
+    <div class="ui selectable list">
+
+      {{#each items as |item|}}
+        {{ui-checkbox label=item.name value=item.id groupValue=selectedItemId}}
+      {{/each}}
+
+    </div>
+  </div>
+</div>

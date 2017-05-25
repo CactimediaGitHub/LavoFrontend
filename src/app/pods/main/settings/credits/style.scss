@@ -1,0 +1,98 @@
+.ui.layout.credits {
+
+  > .header {
+    height: 34.4vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    justify-content: flex-start;
+    background:{
+      image:url(images/page-header-credit.png);
+      position:0 5vh;
+      color:#7b8ace;
+      repeat:no-repeat;
+      size:cover;
+    }
+
+
+    &.violet{
+      background-image: none;
+      background-color: $violet;
+    }
+
+    .text {
+      text-align: center;
+      font-weight: 100;
+      font-size: .9em;
+      opacity: .85;
+      margin-top: 1.2em;
+
+      h1 {
+        margin: 0;
+        font-weight: 300;
+        font-size: 2.5em;
+      }
+    }
+
+    .ui.header {
+      padding: 2rem .9rem 0 .9rem !important;
+    }
+  }
+
+  > .content:not(.header):not(.footer) {
+
+    p {
+      color: gray;
+      font-weight: 100;
+      padding: 0 1rem 1rem;
+    }
+  }
+}
+
+.ui.layout.buy {
+
+  > .header {
+
+    .ui.header {
+      padding: 2rem .9rem 1.75em !important;
+    }
+  }
+
+  .content {
+
+    .ui.list .action {
+      border-radius: 500rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 14vw;
+      height: 14vw;
+      padding: 0;
+      font-size: 1.4em;
+      line-height: 14vw;
+      margin-left: .55em;
+      color: #646464;
+      border-color: #cccccc;
+      &:active{
+        background-color:#646464;
+        color:white;
+      }
+    }
+  }
+}
+
+.credit-subtitle{
+  margin-top: 1.6em;
+  font-size: .9em;
+
+  &,
+  & + h1{
+    font-weight: 300;
+  }
+
+  & + h1{
+    margin-top: 0;
+  }
+
+}

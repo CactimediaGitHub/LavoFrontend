@@ -1,0 +1,45 @@
+<!--<div class="ui modal-box">
+  <div class="close">
+    <i class="lavo-icon-cross-01"></i>
+  </div>
+
+  <div class="content">
+    <div class="outer-circle">
+      <div class="animated-circle">
+        <i class="lavo-icon-lostconnection icon"></i>
+      </div>
+    </div>
+
+    <div class="caption">
+      Seems you are not connected <br>to the internet. Please try again
+    </div>
+  </div>
+  <div class="footer">
+    <div class="ui full-width unbordered purple button">Reconnect</div>
+  </div>
+</div>-->
+
+<div class="ui transparent purple modal-box">
+  <div class="close button-close" {{action "close"}}>
+    <i class="lavo-icon-cross-01"></i>
+  </div>
+
+  <div class="content">
+    <div class="outer-circle">
+      <div class="animated-circle">
+        <i class="lavo-icon-lock icon"></i>
+      </div>
+    </div>
+
+    <div class="caption">
+      You need to login <br>to use all app features
+    </div>
+  </div>
+  <div class="footer">
+    {{#link-to (constant "ROUTE_AUTH_SIGNIN")
+    classNames="ui full-width unbordered purple button"
+    tagName="button"}}
+      Login now
+    {{/link-to}}
+  </div>
+</div>

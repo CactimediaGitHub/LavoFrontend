@@ -1,0 +1,23 @@
+{{#if dataUrl}}
+    <div class="cropper-container">
+    <img src={{dataUrl}} alt="">
+  </div>
+  <div class="avatar-buttons">
+    <button {{action "apply"}} class="ui blue button">Apply</button>
+    <button {{action "cancel"}} class="ui blue button">Cancel</button>
+  </div>
+{{else}}
+  <label class="avatar {{unless modelProperty "empty"}} {{if isLoading 'loading'}}">
+  {{file-uploader action="setAvatar" accept="image/*"}}
+    {{#if modelProperty}}
+      {{#unless isLoading}}
+        <img src="{{modelProperty}}" alt="">
+      {{/unless}}
+    {{/if}}
+  </label>
+  {{#unless isLoading}}
+    Click to change photo
+  {{else}}
+    Please wait while image is loading....
+  {{/unless}}
+{{/if}}

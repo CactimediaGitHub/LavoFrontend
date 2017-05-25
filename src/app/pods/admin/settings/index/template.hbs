@@ -1,0 +1,61 @@
+<div class="ui padded layout settings">
+
+  <div class="header content">
+    <div class="ui header default-header-height  more-homepage">
+      {{#link-to (constant "ROUTE_ADMIN_HOME") class='item' tagName='div'}}
+        <i class="lavo-icon-arrow icon"></i>
+      {{/link-to}}
+    </div>
+  </div>
+
+  <div class="content">
+
+    <div class="ui user-card">
+
+      <div class="avatar {{unless session.currentUser.avatar "blank-image"}}">
+        {{#if session.currentUser.avatar}}
+          <img src="{{session.currentUser.avatar}}" alt="">
+        {{else}}
+          <div class="text-bold short-profile-name"> {{session.currentUser.firstLetter}} </div>
+        {{/if}}
+      </div>
+
+      {{session.currentUser.name}}
+    </div>
+
+    <div class="ui list border-bottom-none menu">
+      {{#link-to (constant "ROUTE_ADMIN_SETTINGS_NOTIFICATIONS") class='item'}}
+        <div class="content"><i class="lavo-icon-ring icon"></i> Notifications</div>
+        {{#if model.notificationsCount}}
+          <div class="content">
+            <div class="ui counter">{{model.notificationsCount}}</div>
+          </div>
+        {{/if}}
+      {{/link-to}}
+      {{#link-to (constant "ROUTE_ADMIN_SETTINGS_PROMOTION") class="item"}}
+        <div class="content"><i class="lavo-icon-promotion icon"></i> Promotions</div>
+      {{/link-to}}
+      {{#link-to (constant "ROUTE_ADMIN_SETTINGS_PROFILE") class='item'}}
+        <div class="content"><i class="lavo-icon-user icon"></i> Account settings</div>
+      {{/link-to}}
+      {{#link-to (constant "ROUTE_ADMIN_SETTINGS_PAYMENT") class='item'}}
+        <div class="content"><i class="lavo-icon-credit-card icon"></i> Payment</div>
+      {{/link-to}}
+      <div class="item" {{action 'logout'}}>
+        <div class="content"><i class="lavo-icon-logout icon"></i> Logout</div>
+      </div>
+    </div>
+
+    <div class="ui list header"></div>
+
+    <div class="ui list border-bottom-none menu">
+      {{link-to 'About' (constant "ROUTE_ADMIN_INFO") "about" class='item'}}
+      {{link-to 'Terms and conditions' (constant "ROUTE_ADMIN_INFO") "terms" class='item'}}
+      {{link-to 'Privacy policy' (constant "ROUTE_ADMIN_INFO") "privacy_policy" class='item'}}
+      {{link-to 'Return policy' (constant "ROUTE_ADMIN_INFO") "return_policy" class='item'}}
+    </div>
+    <div class="ui list header"></div>
+
+  </div>
+
+</div>

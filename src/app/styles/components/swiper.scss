@@ -1,0 +1,81 @@
+.ui.swiper {
+  &.swiper-container {
+    height: 100%;
+
+    .swiper-wrapper {
+      align-items: center;
+    }
+
+    .swiper-pagination {
+      top: 3.4rem;
+      bottom: inherit;
+    }
+
+    .swiper-pagination-bullet {
+      border: 1px solid #82d2ff;
+      width: 10px;
+      height: 10px;
+      background: none;
+      opacity: 1;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: #fff;
+      border: none;
+    }
+
+    .swiper-slide {
+      color: $darkBlue;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      transition: color 200ms linear, transform 200ms linear, background 100ms linear, border-radius 300ms linear;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+
+      &-active {
+        //background: $raspberry;
+        color: $white;
+      }
+
+      &.transparent {
+        background: transparent !important;
+      }
+    }
+  }
+}
+
+.swipe-wrapper {
+  position: relative;
+
+  .item {
+    transition: transform 200ms ease;
+    position: relative;
+    z-index: 3;
+    background-color: #fff;
+  }
+
+  .remove-address {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    z-index: 2;
+    background: #ED7676;
+    color: #fff;
+    width: 120px;
+    text-align: center;
+    text-transform: uppercase;
+
+    span{
+      line-height: 1;
+    }
+  }
+}

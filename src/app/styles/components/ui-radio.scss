@@ -1,0 +1,16 @@
+.ui.list .item .order_setting_address {
+  display: flex;
+  width: 90%;
+  .content {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    padding-left: 7px;
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+  }
+
+  .lavo-icon-map-marker {
+    color:#05a4ff;
+    font-size:1.4em;
+  }
+}

@@ -1,0 +1,62 @@
+.ui.layout.main {
+
+  & > .content {
+
+    .header.content {
+
+      .ui.header {
+        padding: 1.4rem 0 0;
+        &.main-home {
+          padding: .5rem .5rem 0;
+          > * {
+            padding: 1.4rem 0.5rem 0.6rem 0;
+          }
+        }
+        .icon {
+          font-size: 1.14em;
+        }
+
+        .small-icon {
+          .icon {
+            padding-left: 6px;
+            color: $lightGray;
+            font-size: .85em;
+          }
+        }
+
+        .icon-counter {
+          &.item {
+            display: flex;
+            justify-content: flex-end;
+            max-width: 19vw;
+          }
+
+          .icon {
+            padding-right: 9px;
+            font-size: 1.54em;
+          }
+        }
+
+        .counter {
+          padding: 0.1em 0.32em;
+        }
+      }
+
+    }
+
+    &.app {
+      flex: 1;
+      overflow-y: scroll;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+.center-text {
+  text-align: center;
+}
+
+.profile-text-color {
+  color: #1ea6fc;
+}

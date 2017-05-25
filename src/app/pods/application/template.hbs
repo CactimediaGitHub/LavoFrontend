@@ -1,0 +1,13 @@
+{{liquid-modal}}
+<div class="application-wrapper {{platform}} {{if state.keyboardOpened 'keyboard'}} ">
+  {{outlet}}
+</div>
+  <div class="ui modal location app-loading {{if state.isPending 'visible'}}">
+
+    <div class="outer-circle">
+      <div class="animated-circle">
+        <div class="white-dot"></div>
+      </div>
+    </div>
+
+  </div>

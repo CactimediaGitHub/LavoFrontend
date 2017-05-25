@@ -1,0 +1,28 @@
+{
+"ios": {
+    "debug": {
+      "codeSignIdentitiy": "iPhone Development",
+      "provisioningProfile": "67f8d0c5-a2a4-43d9-b77f-9b88e1838629"
+    },
+    "release": {
+      "codeSignIdentitiy": "iPhone Distribution",
+      "provisioningProfile": "67f8d0c5-a2a4-43d9-b77f-9b88e1838629"
+    }
+  },
+  "android": {
+    "debug": {
+      "keystore": "debug.keystore",
+      "storePassword": "android",
+      "alias": "LITS_debug",
+      "password": "android",
+      "keystoreType": ""
+    },
+    "release": {
+      "keystore": "keystore.jks",
+      "storePassword": "fef34d7",
+      "alias": "release",
+      "password": "fef34d7",
+      "keystoreType": ""
+    }
+  }
+}

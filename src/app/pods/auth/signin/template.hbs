@@ -1,0 +1,14 @@
+<div class="ui padded layout auth">
+  <div class="header content">
+    <div class="ui header header-default-height authorization-page">
+      <div class="item">
+        {{#link-to "intro" class="ui transparent unbordered button go-back"}}
+          <i class="lavo-icon-arrow icon"></i>
+        {{/link-to}}
+      </div>
+    </div>
+  </div>
+  <div class="content keyboard-scroll">
+    {{form-signin onSubmit=(route-action 'signIn') }}
+  </div>
+</div>
