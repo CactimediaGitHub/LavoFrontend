@@ -68,7 +68,7 @@ export default Route.extend({
           return alert('The amount of credits should be more than 0');
       }
       let cvv;
-      let pay = (cvv=123) => {
+      let pay = (cvv) => {
         if (Ember.isEmpty(cvv)) {
           set(this, 'state.isPending', false);
           return alert('No CVV value provided');
@@ -108,7 +108,7 @@ export default Route.extend({
 
                 ajax.request(event.url).then((data)=> {
                   let responseCode = get(data, 'data.attributes.response-code');
-                  if (responseCode == 14000) {
+                  if (responseCode == 14000 || responseCode == 20064) {
                     deferred.resolve(data);
                   } else {
                     deferred.reject(data);
@@ -143,7 +143,7 @@ export default Route.extend({
 
       set(this, 'state.isPending', true);
       if (!get(card, 'firstPurchase')) {
-        pay(true);
+        prompt('Enter CVV for your card').then(pay);
       } else {
         pay(true);
       }
