@@ -96,10 +96,17 @@ export default Route.extend({
     },
 
     search(value) {
-      if (this.controllerFor('application').get('currentRouteName') === ROUTE_VENDOR_MAP) {
-        run(this, 'applyQuery', value)
-      } else {
-        run.debounce(this, 'applyQuery', value, 700);
+      if (value.length % 2 == 0) {
+        set(this, 'state.isPending', true);
+        if (this.controllerFor('application').get('currentRouteName') === ROUTE_VENDOR_MAP) {
+          run(this, 'applyQuery', value).then( => () {
+            set(this, 'state.isPending', false);
+          });
+        } else {
+          run.debounce(this, 'applyQuery', value, 700).then( => () {
+            set(this, 'state.isPending', false);
+          });
+        }
       }
     },
 
